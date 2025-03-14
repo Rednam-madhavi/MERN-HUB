@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaHome } from "react-icons/fa";
 import '/src/App.css';
 
 const Navbar = () => {
     return (
         <nav className="flex flex-col md:flex-row justify-between bg-white p-3 text-black border-b border-gray-800 shadow-lg sticky top-0 z-50">
             <Link to="/" className="font-semibold text-xl cursor-pointer p-2 whitespace-nowrap">
+                <FaHome className="inline-block mb-2" size={24} /> 
                 MERN<span className="font-light">Hub</span>
             </Link>
 

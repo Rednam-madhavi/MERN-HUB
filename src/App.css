@@ -1,18 +1,16 @@
-/* Custom scrollbar for better visibility on small screens */
-.scrollbar-thin {
-    scrollbar-width: thin;
+/* Hide scrollbar for Chrome, Safari and Edge */
+.custom-scrollbar::-webkit-scrollbar {
+    display: none;
 }
 
-.scrollbar-thumb-gray-400::-webkit-scrollbar-thumb {
-    background: #9ca3af;
-    border-radius: 10px;
+/* Hide scrollbar for Firefox */
+.custom-scrollbar {
+    scrollbar-width: none;
 }
 
-.scrollbar-track-gray-200::-webkit-scrollbar-track {
-    background: #e5e7eb;
-}
-
-/* Add this to your App.css or any global CSS file */
-.transition-all {
-    transition: all 0.3s ease;
+/* Ensure horizontal scrolling still works */
+.custom-scrollbar {
+    -ms-overflow-style: none;
+    overflow-x: auto;
+    white-space: nowrap;
 }
