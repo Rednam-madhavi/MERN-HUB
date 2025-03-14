@@ -4,10 +4,14 @@ import Home from './components/Home';
 import Html from './components/Html';
 import Css from './components/Css';
 import JavaScript from './components/JavaScript';
+import Footer from './components/Footer';
 
 function App() {
   const router = createBrowserRouter([
-    { path: '/', element: <><Navbar /><Home /></> },
+    {
+      path: '/',
+      element: <><Navbar /><Home /></>
+    },
     { path: '/html/:slug?', element: <><Navbar /><Html /></> },
     { path: '/css/:slug?', element: <><Navbar /><Css /></> },
     { path: '/bootstrap/:slug?', element: <><Navbar /><Html /></> },
