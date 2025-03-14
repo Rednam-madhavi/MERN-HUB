@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './Footer';
 
 const Home = () => {
   const technologies = [
@@ -32,6 +33,7 @@ const Home = () => {
         </div>
       </div>
 
+      <Footer />
     </>
   );
 };
