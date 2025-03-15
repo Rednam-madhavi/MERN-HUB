@@ -11,8 +11,7 @@ const Home = () => {
 
   return (
     <>
-
-      <div className='flex flex-col items-center justify-center min-h-[80vh] bg-white text-gray-900 p-4'>
+      <div className='flex flex-col items-center justify-center min-h-[80vh] bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-4'>
         <h1 className='text-3xl md:text-4xl font-bold mb-6 text-center'>MERN Stack Technologies</h1>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-6'>
           {technologies.map(({ name, img, link }) => (
@@ -21,7 +20,8 @@ const Home = () => {
                 <img
                   src={img}
                   alt={name}
-                  className='h-40 w-40 p-5 hover:scale-125 transition-transform duration-200 cursor-pointer'
+                  className={`h-40 w-40 p-5 hover:scale-125 transition-transform duration-200 cursor-pointer ${name === 'Express' ? 'dark:invert' : ''
+                    }`}
                 />
                 <span className='absolute left-0 right-0 bottom-[-25px] text-sm text-blue-600 underline opacity-0 hover:opacity-100 transition-opacity duration-200 text-center'>
                   {link}
