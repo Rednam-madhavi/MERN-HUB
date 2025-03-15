@@ -4,7 +4,6 @@ import Home from './components/Home';
 import Html from './components/Html';
 import Css from './components/Css';
 import JavaScript from './components/JavaScript';
-import Footer from './components/Footer';
 
 function App() {
   const router = createBrowserRouter([

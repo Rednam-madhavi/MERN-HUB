@@ -1,14 +1,11 @@
-/* Hide scrollbar for Chrome, Safari and Edge */
 .custom-scrollbar::-webkit-scrollbar {
     display: none;
 }
 
-/* Hide scrollbar for Firefox */
 .custom-scrollbar {
     scrollbar-width: none;
 }
 
-/* Ensure horizontal scrolling still works */
 .custom-scrollbar {
     -ms-overflow-style: none;
     overflow-x: auto;
