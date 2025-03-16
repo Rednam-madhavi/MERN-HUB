@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 import { FaHome, FaSun, FaMoon, FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaDatabase } from "react-icons/fa";
 import { SiBootstrap, SiTailwindcss, SiNextdotjs, SiExpress } from "react-icons/si";
-import '/src/App.css';
 
-const Navbar = () => {
-    const [darkMode, setDarkMode] = useState(localStorage.getItem("theme") === "dark");
-
-    useEffect(() => {
-        document.documentElement.classList.toggle("dark", darkMode);
-        localStorage.setItem("theme", darkMode ? "dark" : "light");
-    }, [darkMode]);
+const Navbar = ({ setIsSidebarOpen }) => {
+    const [darkMode, setDarkMode] = React.useState(localStorage.getItem("theme") === "dark");
 
     const menuItems = [
         { name: 'html', icon: <FaHtml5 className="text-orange-500" /> },
@@ -26,36 +20,51 @@ const Navbar = () => {
         { name: 'next.js', icon: <SiNextdotjs className="text-black dark:text-white" /> }
     ];
 
+    React.useEffect(() => {
+        document.documentElement.classList.toggle("dark", darkMode);
+        localStorage.setItem("theme", darkMode ? "dark" : "light");
+    }, [darkMode]);
+
     return (
         <>
             <nav className="flex justify-between items-center bg-white dark:bg-gray-900 py-3 px-6 text-black dark:text-white sticky top-0 z-50 shadow-md">
 
-                <Link to="/" className="font-semibold text-xl cursor-pointer flex items-center">
+                <Link to="/" className="font-semibold text-xl flex items-center">
                     <FaHome size={24} className='mr-1' />MERN<span className="font-light">Hub</span>
                 </Link>
 
-                <button
-                    onClick={() => setDarkMode(!darkMode)}
-                    className="p-2 rounded-full transition-all duration-300 focus:outline-none"
-                    aria-label="Toggle Dark Mode"
-                >
-                    {darkMode ? <FaSun className="text-white" size={26} /> : <FaMoon className="text-gray-900" size={26} />}
-                </button>
+                <div className="flex items-center gap-4">
+
+                    <button
+                        onClick={() => setDarkMode(!darkMode)}
+                        className="p-2 rounded-full transition-all duration-300 focus:outline-none"
+                        aria-label="Toggle Dark Mode"
+                    >
+                        {darkMode ? <FaSun className="text-white" size={26} /> : <FaMoon className="text-gray-900" size={26} />}
+                    </button>
+
+                    <button
+                        className="md:hidden text-black dark:text-white p-2 rounded-md"
+                        onClick={() => setIsSidebarOpen(prev => !prev)} // Toggle sidebar
+                    >
+                        <FiMenu size={24} />
+                    </button>
+
+                </div>
 
             </nav>
 
             <div className="w-full overflow-x-auto custom-scrollbar flex justify-center bg-white dark:bg-gray-900 p-3 text-black dark:text-white border-b border-gray-300 dark:border-gray-700 shadow-lg sticky top-0 z-50">
-
-                <ul className="flex gap-4 px-3">
+                <ul className="flex gap-4 px-2 min-w-full">
                     {menuItems.map((item) => (
-                        <Link key={item.name} to={`/${item.name}`} className="px-3 py-2 flex items-center gap-1 rounded-lg transition-colors duration-300 hover:scale-125">
+                        <Link key={item.name} to={`/${item.name}`} className="px-3 py-2 flex items-center gap-1 rounded-lg transition-transform duration-300 hover:scale-125">
                             {item.icon}
                             <li className="whitespace-nowrap">{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</li>
                         </Link>
                     ))}
                 </ul>
-
             </div>
+
 
 
         </>
