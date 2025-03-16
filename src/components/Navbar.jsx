@@ -26,26 +26,26 @@ const Navbar = ({ setIsSidebarOpen }) => {
     }, [darkMode]);
 
     return (
-        <>
-            <nav className="flex justify-between items-center bg-white dark:bg-gray-900 py-3 px-6 text-black dark:text-white sticky top-0 z-50 shadow-md">
+        <div className='sticky top-0 z-50'>
+            <nav className="flex justify-between items-center bg-white dark:bg-gray-900 py-2 px-6 text-black dark:text-white shadow-md">
 
                 <Link to="/" className="font-semibold text-xl flex items-center">
                     <FaHome size={24} className='mr-1' />MERN<span className="font-light">Hub</span>
                 </Link>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-">
 
                     <button
                         onClick={() => setDarkMode(!darkMode)}
                         className="p-2 rounded-full transition-all duration-300 focus:outline-none"
                         aria-label="Toggle Dark Mode"
                     >
-                        {darkMode ? <FaSun className="text-white" size={26} /> : <FaMoon className="text-gray-900" size={26} />}
+                        {darkMode ? <FaSun className="text-white" size={20} /> : <FaMoon className="text-gray-900" size={20} />}
                     </button>
 
                     <button
-                        className="md:hidden text-black dark:text-white p-2 rounded-md"
-                        onClick={() => setIsSidebarOpen(prev => !prev)} // Toggle sidebar
+                        className="md:hidden text-black dark:text-white p-2 rounded-md font-bold"
+                        onClick={() => setIsSidebarOpen(prev => !prev)}
                     >
                         <FiMenu size={24} />
                     </button>
@@ -54,8 +54,8 @@ const Navbar = ({ setIsSidebarOpen }) => {
 
             </nav>
 
-            <div className="w-full overflow-x-auto custom-scrollbar flex justify-center bg-white dark:bg-gray-900 p-3 text-black dark:text-white border-b border-gray-300 dark:border-gray-700 shadow-lg sticky top-0 z-50">
-                <ul className="flex gap-4 px-2 min-w-full">
+            <div className="w-full overflow-x-auto custom-scrollbar bg-white dark:bg-gray-900 p-3 text-black dark:text-white border-b border-gray-300 dark:border-gray-700 shadow-lg">
+                <ul className="flex flex-nowrap gap-4 px-2 min-w-max justify-center">
                     {menuItems.map((item) => (
                         <Link key={item.name} to={`/${item.name}`} className="px-3 py-2 flex items-center gap-1 rounded-lg transition-transform duration-300 hover:scale-125">
                             {item.icon}
@@ -67,7 +67,8 @@ const Navbar = ({ setIsSidebarOpen }) => {
 
 
 
-        </>
+
+        </div>
     );
 };
 
