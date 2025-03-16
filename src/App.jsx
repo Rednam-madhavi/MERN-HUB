@@ -7,6 +7,7 @@ import Css from "./components/Css";
 import JavaScript from "./components/JavaScript";
 import Bootstrap from "./components/Bootstrap";
 import TailwindCss from "./components/TailwindCss";
+import ReactJs from "./components/ReactJs";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Add sidebar state
@@ -21,7 +22,7 @@ function App() {
         <Route path="/bootstrap/:slug?" element={<Bootstrap />} />
         <Route path="/tailwindcss/:slug?" element={<TailwindCss />} />
         <Route path="/javascript/:slug?" element={<JavaScript />} />
-        <Route path="/react.js/:slug?" element={<Html />} />
+        <Route path="/react.js/:slug?" element={<ReactJs />} />
         <Route path="/node.js/:slug?" element={<Html />} />
         <Route path="/express.js/:slug?" element={<Html />} />
         <Route path="/mongodb/:slug?" element={<Html />} />
