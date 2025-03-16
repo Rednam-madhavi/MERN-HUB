@@ -35,7 +35,7 @@ const Bootstrap = () => {
                 {bootstrapVersions.map(({ version, link, description }) => (
                     <div
                         key={version}
-                        className="flex flex-col items-center p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                        className="flex flex-col items-center p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105"
                     >
                         <a
                             href={link}
