@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <>
-      <div className='flex flex-col items-center justify-center min-h-[80vh] bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-4'>
+      <div className='flex flex-col items-center justify-center min-h-[84vh] bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-4'>
         <h1 className='text-3xl md:text-4xl font-bold mb-6 text-center'>MERN Stack Technologies</h1>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-6'>
           {technologies.map(({ name, img, link }) => (
