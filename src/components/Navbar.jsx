@@ -13,7 +13,7 @@ const Navbar = ({ setIsSidebarOpen }) => {
         { name: 'css', icon: <FaCss3Alt className="text-blue-500" /> },
         { name: 'javascript', icon: <FaJs className="text-yellow-500" /> },
         { name: 'bootstrap', icon: <SiBootstrap className="text-purple-500" /> },
-        { name: 'tailwindCss', icon: <SiTailwindcss className="text-teal-500" /> },
+        { name: 'tailwindcss', icon: <SiTailwindcss className="text-teal-500" /> },
         { name: 'react', icon: <FaReact className="text-blue-400" /> },
         { name: 'node.js', icon: <FaNodeJs className="text-green-500" /> },
         { name: 'express', icon: <SiExpress className="text-black dark:text-white " /> },
@@ -26,9 +26,12 @@ const Navbar = ({ setIsSidebarOpen }) => {
         localStorage.setItem("theme", darkMode ? "dark" : "light");
     }, [darkMode]);
 
+    // Hide sidebar menu button on "/", "/bootstrap", "/tailwindcss"
+    const hideMenuButton = ["/", "/bootstrap", "/tailwindcss"].includes(location.pathname);
+
     return (
         <div className='sticky top-0 z-50'>
-            <nav className="flex justify-around items-center bg-white dark:bg-gray-900 py-2 px-6 text-black dark:text-white shadow-md">
+            <nav className="flex justify-between items-center bg-white dark:bg-gray-900 py-2 px-6 text-black dark:text-white shadow-md">
 
                 {/* Home Link */}
                 <Link to="/" className="font-semibold text-xl flex items-center">
@@ -45,10 +48,10 @@ const Navbar = ({ setIsSidebarOpen }) => {
                         {darkMode ? <FaSun className="text-white" size={20} /> : <FaMoon className="text-gray-900" size={20} />}
                     </button>
 
-                    {/* Sidebar Menu Button - Hidden on Home Page */}
-                    {location.pathname !== "/" && (
+                    {/* Sidebar Menu Button - Hidden on "/", "/bootstrap", "/tailwindcss" */}
+                    {!hideMenuButton && (
                         <button
-                            className="md:hidden text-black dark:text-white p-2 rounded-md font-bold"
+                            className="md:hidden text-black dark:text-white p-2 rounded-md font-bold ml-4"
                             onClick={() => setIsSidebarOpen(prev => !prev)}
                         >
                             <FiMenu size={24} />
