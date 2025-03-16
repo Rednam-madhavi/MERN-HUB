@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 import { FaHome, FaSun, FaMoon, FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaDatabase } from "react-icons/fa";
 import { SiBootstrap, SiTailwindcss, SiNextdotjs, SiExpress } from "react-icons/si";
 
 const Navbar = ({ setIsSidebarOpen }) => {
     const [darkMode, setDarkMode] = React.useState(localStorage.getItem("theme") === "dark");
+    const location = useLocation();
 
     const menuItems = [
         { name: 'html', icon: <FaHtml5 className="text-orange-500" /> },
@@ -27,14 +28,15 @@ const Navbar = ({ setIsSidebarOpen }) => {
 
     return (
         <div className='sticky top-0 z-50'>
-            <nav className="flex justify-between items-center bg-white dark:bg-gray-900 py-2 px-6 text-black dark:text-white shadow-md">
+            <nav className="flex justify-around items-center bg-white dark:bg-gray-900 py-2 px-6 text-black dark:text-white shadow-md">
 
+                {/* Home Link */}
                 <Link to="/" className="font-semibold text-xl flex items-center">
                     <FaHome size={24} className='mr-1' />MERN<span className="font-light">Hub</span>
                 </Link>
 
-                <div className="flex items-center gap-">
-
+                <div className="flex items-center">
+                    {/* Dark Mode Toggle */}
                     <button
                         onClick={() => setDarkMode(!darkMode)}
                         className="p-2 rounded-full transition-all duration-300 focus:outline-none"
@@ -43,17 +45,19 @@ const Navbar = ({ setIsSidebarOpen }) => {
                         {darkMode ? <FaSun className="text-white" size={20} /> : <FaMoon className="text-gray-900" size={20} />}
                     </button>
 
-                    <button
-                        className="md:hidden text-black dark:text-white p-2 rounded-md font-bold"
-                        onClick={() => setIsSidebarOpen(prev => !prev)}
-                    >
-                        <FiMenu size={24} />
-                    </button>
-
+                    {/* Sidebar Menu Button - Hidden on Home Page */}
+                    {location.pathname !== "/" && (
+                        <button
+                            className="md:hidden text-black dark:text-white p-2 rounded-md font-bold"
+                            onClick={() => setIsSidebarOpen(prev => !prev)}
+                        >
+                            <FiMenu size={24} />
+                        </button>
+                    )}
                 </div>
-
             </nav>
 
+            {/* Horizontal Scrollable Menu */}
             <div className="w-full overflow-x-auto custom-scrollbar bg-white dark:bg-gray-900 p-3 text-black dark:text-white border-b border-gray-300 dark:border-gray-700 shadow-lg">
                 <ul className="flex flex-nowrap gap-4 px-2 min-w-max justify-center">
                     {menuItems.map((item) => (
@@ -64,10 +68,6 @@ const Navbar = ({ setIsSidebarOpen }) => {
                     ))}
                 </ul>
             </div>
-
-
-
-
         </div>
     );
 };
