@@ -18,15 +18,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/html/:slug?" element={<Html isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
-        <Route path="/css/:slug?" element={<Css />} />
+        <Route path="/css/:slug?" element={<Css isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
         <Route path="/bootstrap/:slug?" element={<Bootstrap />} />
         <Route path="/tailwindcss/:slug?" element={<TailwindCss />} />
-        <Route path="/javascript/:slug?" element={<JavaScript />} />
-        <Route path="/react.js/:slug?" element={<ReactJs />} />
-        <Route path="/node.js/:slug?" element={<Html />} />
-        <Route path="/express.js/:slug?" element={<Html />} />
-        <Route path="/mongodb/:slug?" element={<Html />} />
-        <Route path="/next.js/:slug?" element={<Html />} />
+        <Route path="/javascript/:slug?" element={<JavaScript isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
+        <Route path="/react/:slug?" element={<ReactJs isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
+        <Route path="/node.js/:slug?" element={<Html isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
+        <Route path="/express/:slug?" element={<Html isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
+        <Route path="/mongodb/:slug?" element={<Html isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
+        <Route path="/next.js/:slug?" element={<Html isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
       </Routes>
     </BrowserRouter>
   );

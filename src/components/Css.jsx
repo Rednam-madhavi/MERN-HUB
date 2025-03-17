@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { FiMenu } from "react-icons/fi";
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { X } from "lucide-react";
 
 const topics = [
@@ -15,7 +14,7 @@ const Css = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const { slug } = useParams();
     const [selectedTopic, setSelectedTopic] = useState("CSS Introduction");
 
-    const generateSlug = (topic) => topic.toLowerCase().replace(/\s+/g, "-");
+    const generateSlug = (topic) => topic.toLowerCase().replace(/\s+/g, '-');
     const findTopicBySlug = (slug) => {
         for (const topic of topics) {
             for (const subtopic of topic.subtopics) {
@@ -32,7 +31,6 @@ const Css = ({ isSidebarOpen, setIsSidebarOpen }) => {
     return (
         <>
             <div className="flex h-screen relative">
-
                 {isSidebarOpen && (
                     <div className="fixed inset-0 bg-white dark:bg-gray-900 text-black dark:text-white p-4 z-50 flex flex-col">
                         <div className="flex justify-between items-center border-b pb-2">
@@ -41,7 +39,6 @@ const Css = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                 <X size={28} />
                             </button>
                         </div>
-
                         <div className="overflow-y-auto flex-1 p-4">
                             <ul className="space-y-2">
                                 {topics.map(({ heading, subtopics }) => (
@@ -52,8 +49,8 @@ const Css = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                                 <li
                                                     key={subtopic}
                                                     className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
-                                                        ? "bg-gray-100 dark:bg-gray-700"
-                                                        : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
+                                                        ? 'bg-gray-100 dark:bg-gray-700'
+                                                        : 'hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black'
                                                         }`}
                                                     onClick={() => {
                                                         navigate(`/css/${generateSlug(subtopic)}`);
@@ -71,7 +68,7 @@ const Css = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     </div>
                 )}
 
-                <div className="hidden md:block bg-white dark:bg-gray-900 text-black dark:text-white p-4 overflow-y-auto md:w-1/4" style={{ height: "100vh" }}>
+                <div className={`hidden md:block bg-white dark:bg-gray-900 text-black dark:text-white p-4 overflow-y-auto md:w-1/4`} style={{ height: '100vh' }}>
                     <ul className="space-y-2">
                         {topics.map(({ heading, subtopics }) => (
                             <div key={heading}>
@@ -81,12 +78,10 @@ const Css = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                         <li
                                             key={subtopic}
                                             className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
-                                                ? "bg-gray-100 dark:bg-gray-700"
-                                                : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
+                                                ? 'bg-gray-100 dark:bg-gray-700'
+                                                : 'hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black'
                                                 }`}
-                                            onClick={() => {
-                                                navigate(`/css/${generateSlug(subtopic)}`);
-                                            }}
+                                            onClick={() => navigate(`/css/${generateSlug(subtopic)}`)}
                                         >
                                             {subtopic}
                                         </li>
@@ -98,16 +93,9 @@ const Css = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 </div>
 
                 <div className="flex-1 p-4 md:p-6 h-screen overflow-y-auto dark:bg-gray-800 dark:text-white">
-                    <h1 className="text-2xl md:text-4xl font-semibold mb-4 capitalize">
-                        {selectedTopic}
-                    </h1>
+                    <h1 className="text-2xl md:text-4xl font-semibold mb-4 capitalize">{selectedTopic}</h1>
                     <p>Content related to {selectedTopic} will be displayed here.</p>
                 </div>
-
-                <button className="md:hidden fixed top-4 right-4 z-50 text-black dark:text-white p-2 rounded-md" onClick={() => setIsSidebarOpen(true)}>
-                    <FiMenu size={24} />
-                </button>
-
             </div>
         </>
     );

@@ -3,18 +3,27 @@ import { useNavigate, useParams } from "react-router-dom";
 import { X } from "lucide-react";
 
 const topics = [
-    { heading: "JS Introduction", subtopics: ["JS Introduction", "JS Execution", "Node.js Installation"] },
-    { heading: "JavaScript Variables", subtopics: ["What are Variables?", "Variable Naming Rules", "Primitives and Objects", "Operators and Expressions", "var vs let vs const"] },
-    { heading: "JavaScript Basics", subtopics: ["If else conditionals", "If else ladder", "Switch case", "Ternary Operator", "For Loops", "While Loop", "Functions"] },
-    { heading: "JavaScript Objects", subtopics: ["Strings", "Arrays and Array Methods", "Loops with Arrays", "Map, Filter and Reduce", "Date", "Math", "Number", "Boolean"] },
-    { heading: "DOM & BOM", subtopics: ["Window Object", "History Object", "Navigator Object", "Screen Object", "Document Object", "getElementById", "getElementsByClassName", "getElementsByName", "getElementsByTagName", "innerHTML", "outerHTML"] },
-    { heading: "OOPs in JavaScript", subtopics: ["Class", "Objects", "Constructor", "Static Method", "Encapsulation", "Inheritance", "Polymorphism", "Abstraction"] }
+    {
+        heading: "React Tutorial",
+        subtopics: [
+            "React Home", "React Setup", "React Getting Started", "React ES6", "React Render HTML",
+            "React JSX", "React Components", "React Class", "React Props", "React Events",
+            "React Conditional", "React Lists", "React Forms", "React Router", "React Memo", "React CSS Styling"
+        ]
+    },
+    {
+        heading: "React Hooks",
+        subtopics: [
+            "What is a Hook?", "React useState Hook", "React useEffect Hook", "React useContext",
+            "React useRef", "React useReducer", "React useCallback", "React useMemo"
+        ]
+    }
 ];
 
-const JavaScript = ({ isSidebarOpen, setIsSidebarOpen }) => {
+const ReactJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const navigate = useNavigate();
     const { slug } = useParams();
-    const [selectedTopic, setSelectedTopic] = useState("JS Introduction");
+    const [selectedTopic, setSelectedTopic] = useState("React Home");
 
     const generateSlug = (topic) => topic.toLowerCase().replace(/\s+/g, "-");
     const findTopicBySlug = (slug) => {
@@ -23,7 +32,7 @@ const JavaScript = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 if (generateSlug(subtopic) === slug) return subtopic;
             }
         }
-        return "JS Introduction";
+        return "React Home";
     };
 
     useEffect(() => {
@@ -51,9 +60,10 @@ const JavaScript = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                                 key={subtopic}
                                                 className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
                                                     ? "bg-gray-100 dark:bg-gray-700"
-                                                    : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"}`}
+                                                    : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
+                                                    }`}
                                                 onClick={() => {
-                                                    navigate(`/javascript/${generateSlug(subtopic)}`);
+                                                    navigate(`/react/${generateSlug(subtopic)}`);
                                                     setIsSidebarOpen(false);
                                                 }}
                                             >
@@ -79,9 +89,10 @@ const JavaScript = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                         key={subtopic}
                                         className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
                                             ? "bg-gray-100 dark:bg-gray-700"
-                                            : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"}`}
+                                            : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
+                                            }`}
                                         onClick={() => {
-                                            navigate(`/javascript/${generateSlug(subtopic)}`);
+                                            navigate(`/react/${generateSlug(subtopic)}`);
                                         }}
                                     >
                                         {subtopic}
@@ -103,4 +114,4 @@ const JavaScript = ({ isSidebarOpen, setIsSidebarOpen }) => {
     );
 };
 
-export default JavaScript;
+export default ReactJs;
