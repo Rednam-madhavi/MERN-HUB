@@ -4,8 +4,8 @@ import { FiHome } from "react-icons/fi";
 
 const Notfound = () => {
     return (
-        <div className="flex flex-col items-center justify-center h-[83.2vh] bg-gray-100 dark:bg-gray-900 dark:text-white px-4 text-center">
-            <h1 className="text-6xl font-extrabold text-gray-800 dark:text-gray-200 animate-pulse">404</h1>
+        <div className="flex flex-col items-center justify-center h-[83.2vh] bg-white dark:bg-gray-900 dark:text-white px-4 text-center">
+            <h1 className="text-9xl  font-extrabold text-gray-800 dark:text-gray-200 animate-pulse">404</h1>
             <p className="text-lg text-gray-600 mt-2 dark:text-gray-400">Oops! The page you are looking for does not exist.</p>
             <Link
                 to="/"

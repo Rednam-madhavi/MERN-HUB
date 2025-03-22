@@ -12,6 +12,7 @@ import MongoDB from "./components/MongoDB";
 import NodeJs from "./components/NodeJs";
 import Express from "./components/Express";
 import NextJs from "./components/NextJs";
+import Notfound from "./components/Notfound"; // Import Notfound component
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -31,6 +32,9 @@ function App() {
         <Route path="/express/:slug?" element={<Express isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
         <Route path="/mongodb/:slug?" element={<MongoDB isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
         <Route path="/next.js/:slug?" element={<NextJs isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />} />
+
+        {/* Catch-all Route for 404 Page */}
+        <Route path="*" element={<Notfound />} />
       </Routes>
     </BrowserRouter>
   );
