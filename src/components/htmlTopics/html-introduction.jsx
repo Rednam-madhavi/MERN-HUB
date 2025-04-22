@@ -1,6 +1,6 @@
 import React from 'react';
-import pageSourceVideo from '../../assets/pagesource.mp4';
-import structure from '../../assets/structure.png';
+import pageSourceVideo from '../../assets/html/pagesource.mp4';
+import structure from '../../assets/html/structure.png';
 
 const Introduction = () => {
   return (
@@ -119,7 +119,7 @@ const Introduction = () => {
             href="https://en.wikipedia.org/wiki/HTML"
             className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
             target="_blank" rel="noopener noreferrer"
-          >
+          >s
             HTML Wikipedia page
           </a>.
         </p>
