@@ -5,6 +5,7 @@ import structure from '../../assets/structure.png';
 const Introduction = () => {
   return (
     <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-8 text-gray-800 dark:text-gray-100">
+
       <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200 tracking-wide">
         What is HTML?
       </h1>
@@ -20,7 +21,6 @@ const Introduction = () => {
         It's a set of instructions that tells a web browser how to display text, images, videos, and other elements on a webpage.
       </p>
 
-      {/* In a Nutshell */}
       <div className="py-4 sm:py-5 space-y-4">
         <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
           In a nutshell:
@@ -33,7 +33,6 @@ const Introduction = () => {
         </ul>
       </div>
 
-      {/* Features */}
       <div className="py-4 sm:py-5 space-y-4">
         <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
           Features of HTML
@@ -46,7 +45,6 @@ const Introduction = () => {
         </ul>
       </div>
 
-      {/* Why HTML Name */}
       <div className="py-4 sm:py-5 space-y-4">
         <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
           Why the Term HyperText & Markup Language?
@@ -63,7 +61,6 @@ const Introduction = () => {
         </p>
       </div>
 
-      {/* Quick Exercise */}
       <div className="py-4 sm:py-5 space-y-4">
         <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
           Quick Exercise
@@ -86,7 +83,6 @@ const Introduction = () => {
         <p className="text-sm sm:text-base md:text-lg">You'll see the HTML code that structures that webpage.</p>
       </div>
 
-      {/* HTML, CSS, JS Analogy */}
       <div className="py-4 sm:py-5 space-y-4">
         <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
           HTML, CSS, JavaScript Analogy
@@ -106,7 +102,6 @@ const Introduction = () => {
         </ul>
       </div>
 
-      {/* History */}
       <div className="py-4 sm:py-5 space-y-4">
         <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
           History of HTML
@@ -130,7 +125,6 @@ const Introduction = () => {
         </p>
       </div>
 
-      {/* Outro */}
       <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
         In the next tutorial, we'll continue our journey and understand how websites work.
       </p>
