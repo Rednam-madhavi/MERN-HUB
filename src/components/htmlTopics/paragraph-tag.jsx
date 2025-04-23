@@ -10,14 +10,12 @@ const ParagraphTag = () => {
     const handleCopy = (text, tag) => {
         clipboard.copy(text);
         setCopiedTag(tag);
-        setTimeout(() => setCopiedTag(null), 2000); // Reset copied state after 2 seconds
+        setTimeout(() => setCopiedTag(null), 2000);
     };
 
     return (
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 text-gray-800 dark:text-gray-100">
-            <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
-                The <code className="bg-gray-200 dark:bg-gray-700 px-1 rounded">&lt;p&gt;</code> Tag
-            </h2>
+
             <p className="text-lg sm:text-xl leading-relaxed">
                 To create well-structured text in your HTML document, the <code className="bg-gray-200 dark:bg-gray-700 px-1 rounded">&lt;p&gt;</code> tag is essential for defining paragraphs.
             </p>
@@ -84,8 +82,8 @@ const ParagraphTag = () => {
                 </video>
             </div>
             <p className="text-center font-semibold text-lg mt-8">
-        Next, we'll look at how to use Horizontal Line Tag.
-      </p>
+                Next, we'll look at how to use Horizontal Line Tag.
+            </p>
         </div>
     );
 };

@@ -2,6 +2,42 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { X } from "lucide-react";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import Introduction from "./htmlTopics/html-introduction";
+import Working from "./htmlTopics/html-working";
+import Installation from "./htmlTopics/html-installation";
+import Execution from "./htmlTopics/html-execution";
+import PageStructure from "./htmlTopics/html-page-structure";
+import Tags from "./htmlTopics/html-tags";
+import Elements from "./htmlTopics/html-elements";
+import Attributes from "./htmlTopics/html-attributes";
+import Comments from "./htmlTopics/html-comments";
+import IdClasses from "./htmlTopics/html-id-&-classes";
+import SkeletalTags from "./htmlTopics/skeletal-tags";
+import HeadingTags from "./htmlTopics/heading-tags";
+import ParagraphTag from "./htmlTopics/paragraph-tag";
+import HorizontalLineTag from "./htmlTopics/horizontal-line-tag";
+import LineBreakTag from "./htmlTopics/line-break-tag";
+import AnchorTag from "./htmlTopics/anchor-tag";
+import ImageTag from "./htmlTopics/image-tag";
+import PreTag from "./htmlTopics/pre-tag";
+import InlineElements from "./htmlTopics/html-inline-elements";
+import BlockElements from "./htmlTopics/html-block-elements";
+import Lists from "./htmlTopics/html-lists";
+import UnorderedList from "./htmlTopics/html-unordered-list";
+import OrderedList from "./htmlTopics/html-ordered-list";
+import DefinitionLists from "./htmlTopics/html-definition-lists";
+import Tables from "./htmlTopics/html-tables";
+import MoreOnTables from "./htmlTopics/more-on-tables";
+import Forms from "./htmlTopics/introduction-to-html-forms";
+import InputTypes from "./htmlTopics/html-input-types";
+import TextareaSelect from "./htmlTopics/textarea-&-select";
+import MoreOnForms from "./htmlTopics/more-on-forms";
+import MetaTags from "./htmlTopics/html-meta-tags";
+import LinkScript from "./htmlTopics/link-&-script-tags";
+import VideoAudioTags from "./htmlTopics/video-&-audio-tags";
+import SvgInHtml from "./htmlTopics/svg-in-html";
+import IFramesInHtml from "./htmlTopics/iframes-in-html";
+
 
 const topics = [
   { heading: "HTML Introduction", subtopics: ["HTML Introduction", "HTML Working", "HTML Installation", "HTML Execution", "HTML Page Structure", "HTML Tags", "HTML Elements", "HTML Attributes", "HTML Comments", "HTML Id & Classes"] },
@@ -129,10 +165,11 @@ const Html = ({ isSidebarOpen, setIsSidebarOpen }) => {
         </div>
 
         <div className="flex-1 p-4 md:p-6 h-screen overflow-y-auto dark:bg-gray-800 dark:text-white">
-          <h1 className="text-2xl md:text-4xl font-semibold mb-4 capitalize">
+          <h1 className="text-2xl md:text-4xl font-semibold capitalize">
             {selectedTopic}
           </h1>
-          <p>Content related to {selectedTopic} will be displayed here.</p>
+          {/* <p>Content related to {selectedTopic} will be displayed here.</p> */}
+          <SvgInHtml />
 
           {/* Buttons for navigation */}
           <div className="flex justify-between p-2 mt-6">

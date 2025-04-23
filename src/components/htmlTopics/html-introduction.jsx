@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import pageSourceVideo from '../../assets/html/pagesource.mp4';
 import structure from '../../assets/html/structure.png';
 
 const Introduction = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-8 text-gray-800 dark:text-gray-100">
-
+      
       <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200 tracking-wide">
         What is HTML?
       </h1>
@@ -93,8 +95,28 @@ const Introduction = () => {
         <img
           src={structure}
           alt="HTML CSS JS Analogy"
-          className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md"
+          className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+          onClick={() => setIsOpen(true)}
         />
+
+        {isOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+            <div className="relative">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute top-2 right-2 text-white bg-gray-800 hover:bg-gray-700 p-1 rounded"
+              >
+                ✕
+              </button>
+              <img
+                src={structure}
+                alt="HTML CSS JS Full View"
+                className="max-w-full max-h-[90vh] rounded-md shadow-lg"
+              />
+            </div>
+          </div>
+        )}
+
         <ul className="list-disc list-inside space-y-3 text-sm sm:text-base md:text-lg">
           <li><strong>HTML:</strong> Car's skeleton or frame (structure)</li>
           <li><strong>CSS:</strong> Car's paint and design (style)</li>
@@ -119,7 +141,7 @@ const Introduction = () => {
             href="https://en.wikipedia.org/wiki/HTML"
             className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
             target="_blank" rel="noopener noreferrer"
-          >s
+          >
             HTML Wikipedia page
           </a>.
         </p>

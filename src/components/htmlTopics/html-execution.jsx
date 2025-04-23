@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useClipboard } from 'use-clipboard-copy';
 import { ClipboardIcon, CheckIcon } from '@heroicons/react/solid';
+import { useClipboard } from 'use-clipboard-copy';
 import vsCodeOpen from '../../assets/html/vs-code-open.png';
 import goLiveIcon from '../../assets/html/vs-code-go-live.png';
 import helloWorldPreview from '../../assets/html/hello-world-html.png';
@@ -11,6 +11,8 @@ import htmlPreviewLive from '../../assets/html/live-preview-html-in-action.png';
 const Execution = () => {
     const clipboard = useClipboard();
     const [copied, setCopied] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalImage, setModalImage] = useState(null);
 
     const handleCopy = () => {
         clipboard.copy(`<!DOCTYPE html>
@@ -28,11 +30,18 @@ const Execution = () => {
         setTimeout(() => setCopied(false), 2000); // Reset "copied" status after 2 seconds
     };
 
+    const openModal = (image) => {
+        setModalImage(image);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalImage(null);
+    };
+
     return (
         <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-8 text-gray-800 dark:text-gray-100">
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200 tracking-wide">
-                Your Journey to Creating Your First Website Begins Here!
-            </h1>
 
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 Let's mark this as an important milestone: the creation of your first website! And what's a better way to start than with the traditional <strong>"Hello, World!"</strong>?
@@ -53,7 +62,12 @@ const Execution = () => {
                 <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                     If you haven't already set up your environment, open Visual Studio Code (VS Code).
                 </p>
-                <img src={vsCodeOpen} alt="VS Code Open" className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md" />
+                <img
+                    src={vsCodeOpen}
+                    alt="VS Code Open"
+                    className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+                    onClick={() => openModal(vsCodeOpen)}
+                />
             </div>
 
             <div className="space-y-4">
@@ -103,7 +117,12 @@ const Execution = () => {
                 <p className="text-sm sm:text-base md:text-lg">
                     Click the <strong>"Go Live"</strong> icon at the bottom-right corner of your VS Code window.
                 </p>
-                <img src={goLiveIcon} alt="Go Live Icon" className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md" />
+                <img
+                    src={goLiveIcon}
+                    alt="Go Live Icon"
+                    className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+                    onClick={() => openModal(goLiveIcon)}
+                />
                 <p className="text-sm sm:text-base md:text-lg">
                     If you don’t see the button, make sure the <strong>Live Server</strong> extension is installed.
                 </p>
@@ -114,7 +133,12 @@ const Execution = () => {
                 <p className="text-sm sm:text-base md:text-lg">
                     If you've followed along, you should now see your very first website displaying:
                 </p>
-                <img src={helloWorldPreview} alt="Hello World Website" className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md" />
+                <img
+                    src={helloWorldPreview}
+                    alt="Hello World Website"
+                    className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+                    onClick={() => openModal(helloWorldPreview)}
+                />
             </div>
 
             <div className="space-y-4">
@@ -122,16 +146,49 @@ const Execution = () => {
                 <p className="text-sm sm:text-base md:text-lg">
                     Another great extension is <strong>HTML Preview</strong>. Install it by searching for "HTML Preview" in the VS Code Extensions tab.
                 </p>
-                <img src={livepreview} alt="HTML Livepreview extention" className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md" />
+                <img
+                    src={livepreview}
+                    alt="HTML Livepreview extension"
+                    className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+                    onClick={() => openModal(livepreview)}
+                />
                 <p className="text-sm sm:text-base md:text-lg">
                     It adds a preview button within VS Code that shows a live preview of your HTML — right inside the editor!
                 </p>
-                <img src={htmlPreviewBtn} alt="Live HTML Preview" className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md" />
+                <img
+                    src={htmlPreviewBtn}
+                    alt="Live HTML Preview Button"
+                    className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+                    onClick={() => openModal(htmlPreviewBtn)}
+                />
                 <p className="text-sm sm:text-base md:text-lg">
                     Perfect for following this tutorial without needing to switch to a browser.
                 </p>
-                <img src={htmlPreviewLive} alt="Live HTML Preview" className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md" />
+                <img
+                    src={htmlPreviewLive}
+                    alt="Live HTML Preview in action"
+                    className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+                    onClick={() => openModal(htmlPreviewLive)}
+                />
             </div>
+
+            {isModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+                    <div className="relative">
+                        <button
+                            onClick={closeModal}
+                            className="absolute top-2 right-2 text-white bg-gray-800 hover:bg-gray-700 p-1 rounded"
+                        >
+                            ✕
+                        </button>
+                        <img
+                            src={modalImage}
+                            alt="Modal Preview"
+                            className="max-w-full max-h-[90vh] rounded-md shadow-lg"
+                        />
+                    </div>
+                </div>
+            )}
 
             <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
                 Now that you've created your first website, get ready to dive deeper into HTML elements and structure!
