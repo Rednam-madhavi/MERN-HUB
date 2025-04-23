@@ -173,6 +173,10 @@ const HtmlInputTypes = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed mt-6">
                 HTML input types provide powerful tools for user interactions. Understanding how and when to use each type is crucial for creating effective and user-friendly forms.
             </p>
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: Textarea & Select Elements
+            </p>
         </div>
     );
 };

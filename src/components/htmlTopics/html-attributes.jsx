@@ -43,7 +43,7 @@ const HtmlAttributes = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 The ID attribute is used to assign a unique identifier to an HTML element. Each element with an ID has its own unique identity. Multiple elements cannot have the same ID.
             </p>
-            
+
             <h4 className="text-base sm:text-lg font-semibold mt-2">Example:</h4>
             <div className="relative">
                 <pre className="bg-gray-100 dark:bg-gray-700 text-sm sm:text-base p-4 rounded overflow-x-auto border border-gray-300 dark:border-gray-600 shadow-md">
@@ -135,7 +135,7 @@ const HtmlAttributes = () => {
             </p>
 
             <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
-                Now that you understand HTML attributes, you're ready to add more interactivity and structure to your web pages!
+                Next Chapter: HTML Comments
             </p>
         </div>
     );

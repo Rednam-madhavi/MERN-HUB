@@ -81,8 +81,8 @@ const ParagraphTag = () => {
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <p className="text-center font-semibold text-lg mt-8">
-                Next, we'll look at how to use Horizontal Line Tag.
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: Horizontal Line tag
             </p>
         </div>
     );

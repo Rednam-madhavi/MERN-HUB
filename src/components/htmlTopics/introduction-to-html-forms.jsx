@@ -112,6 +112,10 @@ const HtmlForms = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 HTML forms are the backbone of user input on the web. By using form controls effectively, you can create interactive and dynamic web pages that engage users. Stay tuned for more insights into web development!
             </p>
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: HTML Input Types
+            </p>
         </div>
     );
 };

@@ -47,7 +47,7 @@ const SkeletalTag = () => {
                 `<html>
   <!-- Content -->
 </html>`,
-                'The <html> tag is the root element that wraps all the content on the page. It generally contains two main sections: the header (<head>) and the body (<body>).' 
+                'The <html> tag is the root element that wraps all the content on the page. It generally contains two main sections: the header (<head>) and the body (<body>).'
             )}
 
             {renderTagSection(
@@ -103,8 +103,8 @@ const SkeletalTag = () => {
                 </div>
             )}
 
-            <p className="text-center font-semibold text-lg mt-8">
-                Next, we'll look at how to use Heading tags in HTML.
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: Headind Tags
             </p>
         </div>
     );

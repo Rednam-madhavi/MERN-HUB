@@ -89,6 +89,10 @@ const TextareaAndSelect = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 The <code className="bg-gray-200 dark:bg-gray-700 p-1 rounded">&lt;textarea&gt;</code> and <code className="bg-gray-200 dark:bg-gray-700 p-1 rounded">&lt;select&gt;</code> elements add another layer of interactivity to HTML forms, allowing for more versatile and user-friendly data collection. Learning to use them effectively enhances the usability of your web applications.
             </p>
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: More About Forms
+            </p>
         </div>
     );
 };

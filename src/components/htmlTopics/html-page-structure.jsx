@@ -94,7 +94,7 @@ const PageStructure = () => {
             <div className="space-y-6">
                 <p className="text-base"><strong>Note:</strong> Essential HTML tags: <code className="bg-gray-200 dark:bg-gray-700 px-1 py-0.5 rounded">&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;title&gt;</code>, <code>&lt;/head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;/body&gt;</code>, <code>&lt;/html&gt;</code></p>
 
-                {[ 
+                {[
                     { title: "DOCTYPE Declaration", desc: "<!DOCTYPE html> informs the web browser about the HTML version being used. The latest is HTML5." },
                     { title: "HTML Root Element", desc: "<html> wraps the whole document. </html> closes it." },
                     { title: "Head Section", desc: "<head> contains metadata and links to styles/scripts. </head> ends the head." },
@@ -146,9 +146,6 @@ const PageStructure = () => {
                 In the browser, the title bar displays the content inside the <code>&lt;title&gt;</code> tag, and the body content appears in the main window.
             </p>
 
-            <p className="font-semibold text-center text-lg mt-10">
-                Up next: Exploring more HTML tags and elements!
-            </p>
 
             {isOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
@@ -167,6 +164,10 @@ const PageStructure = () => {
                     </div>
                 </div>
             )}
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: HTML Tags
+            </p>
         </div>
     );
 };

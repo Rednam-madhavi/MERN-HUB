@@ -88,6 +88,10 @@ const VideoAndAudio = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 The <code className="bg-gray-200 dark:bg-gray-700 p-1 rounded">&lt;video&gt;</code> and <code className="bg-gray-200 dark:bg-gray-700 p-1 rounded">&lt;audio&gt;</code> tags are powerful tools for embedding media content in HTML. Their attributes help create interactive and dynamic experiences for users.
             </p>
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: SVG in HTML
+            </p>
         </div>
     );
 };

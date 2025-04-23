@@ -90,8 +90,12 @@ const HtmlComments = () => {
                 </button>
             </div>
 
-            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 Comments are an essential part of coding! Use them to improve the readability of your code and communicate better with other developers.
+            </p>
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: HTML Id & Classes
             </p>
         </div>
     );

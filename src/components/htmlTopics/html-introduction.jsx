@@ -7,7 +7,7 @@ const Introduction = () => {
 
   return (
     <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-8 text-gray-800 dark:text-gray-100">
-      
+
       <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200 tracking-wide">
         What is HTML?
       </h1>
@@ -148,7 +148,7 @@ const Introduction = () => {
       </div>
 
       <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
-        In the next tutorial, we'll continue our journey and understand how websites work.
+        Next Chapter: HTML Working
       </p>
     </div>
   );

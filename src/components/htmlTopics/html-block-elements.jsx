@@ -61,6 +61,9 @@ const BlockElements = () => {
                     </code>
                 ))}
             </div>
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: HTML Lists
+            </p>
         </div>
     );
 };

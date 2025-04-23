@@ -21,7 +21,7 @@ const HtmlIdAndClasses = () => {
 
   const renderCodeBlock = (label, code) => (
     <div className="relative bg-gray-100 dark:bg-gray-700 p-3 rounded-md shadow-md mt-4">
-                      <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded font-mono overflow-x-auto whitespace-pre-wrap">
+      <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded font-mono overflow-x-auto whitespace-pre-wrap">
 
         {code}
       </pre>
@@ -78,6 +78,10 @@ const HtmlIdAndClasses = () => {
       <h2 className="text-xl sm:text-2xl font-semibold mt-6">Conclusion</h2>
       <p className="text-sm sm:text-base md:text-lg leading-relaxed">
         Understanding the difference between IDs and Classes is crucial for effective web development.
+      </p>
+
+      <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+        Next Chapter: Skeletal Tags
       </p>
     </div>
   );

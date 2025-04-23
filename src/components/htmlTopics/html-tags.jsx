@@ -160,10 +160,14 @@ const HtmlTags = () => {
             <p className="text-base">
                 The image below shows how tags can be nested, forming a tree-like hierarchy. This structure includes both paired and self-closing tags.
             </p>
-            <img src={elementStructure} alt="HTML Tag Hierarchy" className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md" />
+            <img
+                src={elementStructure}
+                alt="HTML Tag Hierarchy"
+                className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md"
+            />
 
-            <p className="text-center font-semibold text-lg mt-8">
-                Next, we'll look at how to use these tags in real websites!
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: HTML Elements
             </p>
         </div>
     );

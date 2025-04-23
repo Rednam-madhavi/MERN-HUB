@@ -42,6 +42,9 @@ const Execution = () => {
 
     return (
         <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-8 text-gray-800 dark:text-gray-100">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200 tracking-wide">
+                Your Journey to Creating Your First Website Begins Here!
+            </h1>
 
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 Let's mark this as an important milestone: the creation of your first website! And what's a better way to start than with the traditional <strong>"Hello, World!"</strong>?
@@ -191,7 +194,7 @@ const Execution = () => {
             )}
 
             <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
-                Now that you've created your first website, get ready to dive deeper into HTML elements and structure!
+                Next Chapter: HTML  Page Structure
             </p>
         </div>
     );

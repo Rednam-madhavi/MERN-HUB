@@ -81,7 +81,7 @@ const Installation = () => {
       </div>
 
       <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
-        Next up, we’ll explore the structure of an HTML document and start writing our first web page.
+        Next Chapter: HTML Execution
       </p>
     </div>
   );

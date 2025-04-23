@@ -142,6 +142,10 @@ const HtmlLists = () => {
                 alt="Definition list"
                 className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
             />
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: HTML Unordered List
+            </p>
         </div>
     );
 };

@@ -100,6 +100,10 @@ const MoreOnForms = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 Understanding the different attributes available for HTML forms is crucial for building robust and user-friendly web applications. This tutorial covered both commonly used and new HTML5-specific attributes that enhance functionality and user interaction. Employing these attributes effectively will greatly enhance your web forms.
             </p>
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: HTML Meta Tags
+            </p>
         </div>
     );
 };

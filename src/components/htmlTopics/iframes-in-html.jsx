@@ -85,6 +85,10 @@ const IFramesInHtml = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 iFrames offer a convenient way to embed external content into your web pages. Their flexibility and ease of use make them an invaluable tool for modern web development.
             </p>
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                End Of HTML Tutorial
+            </p>
         </div>
     );
 };

@@ -123,6 +123,10 @@ const HtmlMetaTag = () => {
                 </li>
                 <li><strong>Step 4:</strong> Test - Open your site in different browsers to make sure the favicon appears.</li>
             </ol>
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: Link & Script Tags
+            </p>
         </div>
     );
 };

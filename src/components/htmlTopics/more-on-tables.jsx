@@ -195,7 +195,11 @@ const MoreOnTables = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 We've covered some advanced topics related to HTML tables in this blog. By using these features, you can create tables that are not only visually appealing but also highly functional and accessible. Stay tuned for more insights into HTML and web development!
             </p>
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: HTML Forms
+            </p>
         </dark:bg-gray-700>
+        
     );
 };
 

@@ -99,7 +99,7 @@ const Working = () => {
             </section>
 
             <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
-                You don’t need to fully understand browser internals just yet—focus on learning HTML. Next up: setting up VS Code!
+                Next Chapter: HTML Installation
             </p>
         </div>
     );

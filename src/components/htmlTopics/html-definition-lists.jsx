@@ -100,6 +100,10 @@ const HtmlDefinitionLists = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 This creates a clean, organized way to present a list of terms and their corresponding definitions—much like a glossary or dictionary.
             </p>
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: HTML Tables
+            </p>
         </div>
     );
 };

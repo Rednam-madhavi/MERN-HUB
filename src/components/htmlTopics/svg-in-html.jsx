@@ -109,6 +109,9 @@ const SvgInHtml = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 SVG is a powerful tool for adding scalable and interactive graphics to your HTML documents. Its compatibility with CSS and JavaScript makes it a top choice for modern web development.
             </p>
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: IFrames in HTML
+            </p>
         </div>
     );
 };

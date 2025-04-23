@@ -119,8 +119,8 @@ const HtmlElements = () => {
         <li>Elements can be "parent" or "child" when nested, but tags cannot.</li>
       </ul>
 
-      <p className="text-center font-semibold text-lg mt-8">
-        Up next, we’ll explore the difference between block and inline elements.
+      <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+        Next Chapter: HTML Attributes
       </p>
     </div>
   );

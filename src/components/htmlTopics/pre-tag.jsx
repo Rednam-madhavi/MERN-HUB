@@ -142,8 +142,8 @@ if __name__ == "__main__":
             <p className="text-base sm:text-lg">
                 In summary, the <code className="bg-gray-200 dark:bg-gray-700 px-1 rounded">&lt;pre&gt;</code> tag is a versatile tool for preserving the original formatting of text in HTML. Whether you are displaying code snippets or preformatted text, this tag ensures that your content appears exactly as intended.
             </p>
-            <p className="text-center font-semibold text-lg mt-8">
-                Next, we'll look about Html Inline Elements.
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: HTML Inline Elements
             </p>
         </div>
     );

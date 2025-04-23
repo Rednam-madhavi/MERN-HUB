@@ -84,6 +84,10 @@ const LinkAndScript = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 The <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> tags are vital for linking stylesheets and JavaScript files. Proper use of these tags helps keep your HTML clean and your website functional and styled efficiently.
             </p>
+
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: Video & Audio Tags
+            </p>
         </div>
     );
 };

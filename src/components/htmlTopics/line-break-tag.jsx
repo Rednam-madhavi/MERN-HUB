@@ -21,7 +21,7 @@ const LineBreakTag = () => {
 
     return (
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 text-gray-800 dark:text-gray-100">
-            
+
             <p className="text-lg sm:text-xl leading-relaxed">
                 To insert a line break in your HTML document, you can utilize the <code className="bg-gray-200 dark:bg-gray-700 px-1 rounded">&lt;br&gt;</code> tag.
             </p>
@@ -82,12 +82,11 @@ const LineBreakTag = () => {
                 </div>
             )}
 
-            <p className="text-center font-semibold text-lg mt-8">
-                Next, we'll look at how to use Anchor Tag.
+            <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
+                Next Chapter: Anchor Tag
             </p>
         </div>
     );
 };
 
 export default LineBreakTag;
-    
