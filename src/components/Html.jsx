@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { X } from "lucide-react";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+
+// Import all topic components
 import Introduction from "./htmlTopics/html-introduction";
 import Working from "./htmlTopics/html-working";
 import Installation from "./htmlTopics/html-installation";
@@ -38,7 +40,7 @@ import VideoAudioTags from "./htmlTopics/video-&-audio-tags";
 import SvgInHtml from "./htmlTopics/svg-in-html";
 import IFramesInHtml from "./htmlTopics/iframes-in-html";
 
-
+// Topics structure
 const topics = [
   { heading: "HTML Introduction", subtopics: ["HTML Introduction", "HTML Working", "HTML Installation", "HTML Execution", "HTML Page Structure", "HTML Tags", "HTML Elements", "HTML Attributes", "HTML Comments", "HTML Id & Classes"] },
   { heading: "HTML Tags", subtopics: ["Skeletal Tags", "Heading Tags", "Paragraph Tag", "Horizontal Line Tag", "Line Break Tag", "Anchor Tag", "Image Tag", "Pre Tag"] },
@@ -50,6 +52,45 @@ const topics = [
   { heading: "HTML Media", subtopics: ["Video & Audio Tags", "SVG in HTML", "iFrames in HTML"] },
 ];
 
+// Subtopic to component mapping
+const topicComponents = {
+  "HTML Introduction": <Introduction />,
+  "HTML Working": <Working />,
+  "HTML Installation": <Installation />,
+  "HTML Execution": <Execution />,
+  "HTML Page Structure": <PageStructure />,
+  "HTML Tags": <Tags />,
+  "HTML Elements": <Elements />,
+  "HTML Attributes": <Attributes />,
+  "HTML Comments": <Comments />,
+  "HTML Id & Classes": <IdClasses />,
+  "Skeletal Tags": <SkeletalTags />,
+  "Heading Tags": <HeadingTags />,
+  "Paragraph Tag": <ParagraphTag />,
+  "Horizontal Line Tag": <HorizontalLineTag />,
+  "Line Break Tag": <LineBreakTag />,
+  "Anchor Tag": <AnchorTag />,
+  "Image Tag": <ImageTag />,
+  "Pre Tag": <PreTag />,
+  "HTML Inline Elements": <InlineElements />,
+  "HTML Block Elements": <BlockElements />,
+  "HTML Lists": <Lists />,
+  "HTML Unordered List": <UnorderedList />,
+  "HTML Ordered List": <OrderedList />,
+  "HTML Definition Lists": <DefinitionLists />,
+  "HTML Tables": <Tables />,
+  "More on Tables": <MoreOnTables />,
+  "Introduction to HTML Forms": <Forms />,
+  "HTML Input Types": <InputTypes />,
+  "Textarea & Select": <TextareaSelect />,
+  "More on forms": <MoreOnForms />,
+  "HTML Meta Tags": <MetaTags />,
+  "Link & Script Tags": <LinkScript />,
+  "Video & Audio Tags": <VideoAudioTags />,
+  "SVG in HTML": <SvgInHtml />,
+  "iFrames in HTML": <IFramesInHtml />,
+};
+
 const Html = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const navigate = useNavigate();
   const { slug } = useParams();
@@ -57,10 +98,7 @@ const Html = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
   const generateSlug = (topic) => topic.toLowerCase().replace(/\s+/g, '-');
 
-  // Flatten subtopics for easy navigation
   const allSubtopics = topics.flatMap(topic => topic.subtopics);
-
-  // Get current topic index
   const currentIndex = allSubtopics.indexOf(selectedTopic);
 
   const findTopicBySlug = (slug) => {
@@ -76,7 +114,6 @@ const Html = ({ isSidebarOpen, setIsSidebarOpen }) => {
     if (slug) setSelectedTopic(findTopicBySlug(slug));
   }, [slug]);
 
-  // Function to navigate to the next subtopic
   const handleNext = () => {
     if (currentIndex < allSubtopics.length - 1) {
       const nextTopic = allSubtopics[currentIndex + 1];
@@ -85,7 +122,6 @@ const Html = ({ isSidebarOpen, setIsSidebarOpen }) => {
     }
   };
 
-  // Function to navigate to the previous subtopic
   const handlePrevious = () => {
     if (currentIndex > 0) {
       const prevTopic = allSubtopics[currentIndex - 1];
@@ -95,103 +131,116 @@ const Html = ({ isSidebarOpen, setIsSidebarOpen }) => {
   };
 
   return (
-    <>
-      <div className="flex h-screen relative">
-        {isSidebarOpen && (
-          <div className="fixed inset-0 bg-white dark:bg-gray-900 text-black dark:text-white p-4 z-50 flex flex-col">
-            <div className="flex justify-between items-center border-b pb-2">
-              <h2 className="text-xl font-semibold">Topics</h2>
-              <button onClick={() => setIsSidebarOpen(false)}>
-                <X size={28} />
-              </button>
-            </div>
+    <div className="flex h-screen relative">
+      {isSidebarOpen && (
+        <div className="fixed inset-0 bg-white dark:bg-gray-900 text-black dark:text-white p-4 z-50 flex flex-col">
+          <div className="flex justify-between items-center border-b pb-2">
+            <h2 className="text-xl font-semibold">Topics</h2>
+            <button onClick={() => setIsSidebarOpen(false)}>
+              <X size={28} />
+            </button>
+          </div>
 
-            <div className="overflow-y-auto flex-1 p-4">
-              <ul className="space-y-2">
-                {topics.map(({ heading, subtopics }) => (
-                  <div key={heading}>
-                    <h3 className="font-semibold text-lg md:text-xl mb-2 uppercase">{heading}</h3>
-                    <ul>
-                      {subtopics.map((subtopic) => (
-                        <li
-                          key={subtopic}
-                          className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
-                            ? "bg-gray-100 dark:bg-gray-700"
-                            : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
-                            }`}
-                          onClick={() => {
-                            navigate(`/html/${generateSlug(subtopic)}`);
-                            setIsSidebarOpen(false);
-                          }}
-                        >
-                          {subtopic}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+          <div className="overflow-y-auto flex-1 p-4">
+            <ul className="space-y-2">
+              {topics.map(({ heading, subtopics }) => (
+                <div key={heading}>
+                  <h3 className="font-semibold text-lg md:text-xl mb-2 uppercase">{heading}</h3>
+                  <ul>
+                    {subtopics.map((subtopic) => (
+                      <li
+                        key={subtopic}
+                        className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
+                          ? "bg-gray-100 dark:bg-gray-700"
+                          : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
+                          }`}
+                        onClick={() => {
+                          navigate(`/html/${generateSlug(subtopic)}`);
+                          setIsSidebarOpen(false);
+                        }}
+                      >
+                        {subtopic}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
+      <div className={`hidden md:block bg-white dark:bg-gray-900 text-black dark:text-white p-4 overflow-y-auto md:w-1/4`} style={{ height: "100vh" }}>
+        <ul className="space-y-2">
+          {topics.map(({ heading, subtopics }) => (
+            <div key={heading}>
+              <h3 className="font-semibold text-lg md:text-xl mb-2 uppercase">{heading}</h3>
+              <ul>
+                {subtopics.map((subtopic) => (
+                  <li
+                    key={subtopic}
+                    className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
+                      ? "bg-gray-100 dark:bg-gray-700"
+                      : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
+                      }`}
+                    onClick={() => {
+                      navigate(`/html/${generateSlug(subtopic)}`);
+                    }}
+                  >
+                    {subtopic}
+                  </li>
                 ))}
               </ul>
             </div>
-          </div>
-        )}
+          ))}
+        </ul>
+      </div>
 
-        <div
-          className={`hidden md:block bg-white dark:bg-gray-900 text-black dark:text-white p-4 overflow-y-auto md:w-1/4`}
-          style={{ height: "100vh" }}
-        >
-          <ul className="space-y-2">
-            {topics.map(({ heading, subtopics }) => (
-              <div key={heading}>
-                <h3 className="font-semibold text-lg md:text-xl mb-2 uppercase">{heading}</h3>
-                <ul>
-                  {subtopics.map((subtopic) => (
-                    <li
-                      key={subtopic}
-                      className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
-                        ? "bg-gray-100 dark:bg-gray-700"
-                        : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
-                        }`}
-                      onClick={() => {
-                        navigate(`/html/${generateSlug(subtopic)}`);
-                      }}
-                    >
-                      {subtopic}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </ul>
+      <div className="flex-1 p-4 md:p-6 h-screen overflow-y-auto dark:bg-gray-800 dark:text-white">
+
+        <h1 className="text-2xl md:text-4xl font-semibold capitalize">
+          {selectedTopic}
+        </h1>
+
+        <div className="flex justify-between p-2 mt-6">
+          <button
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
+          >
+            <MdArrowBackIos size={20} /> Previous
+          </button>
+
+          <button
+            onClick={handleNext}
+            disabled={currentIndex === allSubtopics.length - 1}
+            className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === allSubtopics.length - 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
+          >
+            Next <MdArrowForwardIos size={20} />
+          </button>
         </div>
 
-        <div className="flex-1 p-4 md:p-6 h-screen overflow-y-auto dark:bg-gray-800 dark:text-white">
-          <h1 className="text-2xl md:text-4xl font-semibold capitalize">
-            {selectedTopic}
-          </h1>
-          {/* <p>Content related to {selectedTopic} will be displayed here.</p> */}
-          <SvgInHtml />
+        {topicComponents[selectedTopic] || <div className="mt-4 text-red-500">Content not found.</div>}
 
-          {/* Buttons for navigation */}
-          <div className="flex justify-between p-2 mt-6">
-            <button
-              onClick={handlePrevious}
-              disabled={currentIndex === 0}
-              className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
-            >
-              <MdArrowBackIos size={20} /> Previous
-            </button>
+        <div className="flex justify-between p-2 mt-6">
+          <button
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
+          >
+            <MdArrowBackIos size={20} /> Previous
+          </button>
 
-            <button
-              onClick={handleNext}
-              disabled={currentIndex === allSubtopics.length - 1}
-              className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === allSubtopics.length - 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
-            >
-              Next <MdArrowForwardIos size={20} />
-            </button>
-          </div>
+          <button
+            onClick={handleNext}
+            disabled={currentIndex === allSubtopics.length - 1}
+            className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === allSubtopics.length - 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
+          >
+            Next <MdArrowForwardIos size={20} />
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
