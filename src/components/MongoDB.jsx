@@ -2,6 +2,24 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { X } from "lucide-react";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import MongoDBHome from "./mongodbTopics/MongoDBHome";
+import MongoDBGetStarted from "./mongodbTopics/MongoDBGetStarted";
+import MongoDBQueryAPI from "./mongodbTopics/MongoDBQueryAPI";
+import MongoDBCreateDB from "./mongodbTopics/MongoDBCreateDB";
+import MongoDBCollection from "./mongodbTopics/MongoDBCollection";
+import MongoDBInsert from "./mongodbTopics/MongoDBInsert";
+import MongoDBFind from "./mongodbTopics/MongoDBFind";
+import MongoDBUpdate from "./mongodbTopics/MongoDBUpdate";
+import MongoDBDelete from "./mongodbTopics/MongoDBDelete";
+import MongoDBQueryOperators from "./mongodbTopics/MongoDBQueryOperators";
+import MongoDBUpdateOperators from "./mongodbTopics/MongoDBUpdateOperators";
+import MongoDBAggregations from "./mongodbTopics/MongoDBAggregations";
+import MongoDBIndexing from "./mongodbTopics/MongoDBIndexingSearch";
+import MongoDBValidation from "./mongodbTopics/MongoDBValidation";
+import MongoDBDataAPI from "./mongodbTopics/MongoDBDataAPI";
+import MongoDBDrivers from "./mongodbTopics/MongoDBDrivers";
+import MongoDBNodeDriver from "./mongodbTopics/MongoDBNodeJsDriver";
+import MongoDBCharts from "./mongodbTopics/MongoDBCharts";
 
 const topics = [
     {
@@ -72,11 +90,10 @@ const MongoDB = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                         {subtopics.map((subtopic) => (
                                             <li
                                                 key={subtopic}
-                                                className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${
-                                                    selectedTopic === subtopic
+                                                className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
                                                         ? "bg-gray-100 dark:bg-gray-700"
                                                         : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
-                                                }`}
+                                                    }`}
                                                 onClick={() => {
                                                     navigate(`/mongodb/${generateSlug(subtopic)}`);
                                                     setIsSidebarOpen(false);
@@ -102,11 +119,10 @@ const MongoDB = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                 {subtopics.map((subtopic) => (
                                     <li
                                         key={subtopic}
-                                        className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${
-                                            selectedTopic === subtopic
+                                        className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
                                                 ? "bg-gray-100 dark:bg-gray-700"
                                                 : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
-                                        }`}
+                                            }`}
                                         onClick={() => navigate(`/mongodb/${generateSlug(subtopic)}`)}
                                     >
                                         {subtopic}
@@ -122,15 +138,16 @@ const MongoDB = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 <h1 className="text-2xl md:text-4xl font-semibold mb-4 capitalize">
                     {selectedTopic}
                 </h1>
-                <p>Content related to {selectedTopic} will be displayed here.</p>
+                {/* <p>Content related to {selectedTopic} will be displayed here.</p> */}
+                <MongoDBHome />
+
 
                 <div className="flex justify-between p-2 mt-6">
                     <button
                         onClick={handlePrevious}
                         disabled={currentIndex === 0}
-                        className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${
-                            currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"
-                        }`}
+                        className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"
+                            }`}
                     >
                         <MdArrowBackIos size={20} /> Previous
                     </button>
@@ -138,9 +155,8 @@ const MongoDB = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     <button
                         onClick={handleNext}
                         disabled={currentIndex === allSubtopics.length - 1}
-                        className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${
-                            currentIndex === allSubtopics.length - 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"
-                        }`}
+                        className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === allSubtopics.length - 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"
+                            }`}
                     >
                         Next <MdArrowForwardIos size={20} />
                     </button>
