@@ -21,7 +21,6 @@ const MongoDBQueryAPI = () => {
 
   return (
     <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-6 text-gray-800 dark:text-gray-100">
-      <h1 className="text-2xl sm:text-3xl font-bold">MongoDB Query API</h1>
 
       <p className="text-sm sm:text-base md:text-lg leading-relaxed">
         The MongoDB Query API is how you interact with your data using various tools or drivers.
@@ -34,7 +33,7 @@ const MongoDBQueryAPI = () => {
       </ul>
 
       <h2 className="text-xl sm:text-2xl font-semibold mt-6">Example: CRUD Operation</h2>
-      <div className="relative bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm font-mono">
+      <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm font-mono">
         <code>{crudExample}</code>
         <button
           onClick={() => handleCopy(crudExample, 'crud')}
@@ -46,7 +45,7 @@ const MongoDBQueryAPI = () => {
       </div>
 
       <h2 className="text-xl sm:text-2xl font-semibold mt-6">Example: Aggregation Pipeline</h2>
-      <div className="relative bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm font-mono">
+      <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm font-mono">
         <code>{aggregationExample}</code>
         <button
           onClick={() => handleCopy(aggregationExample, 'aggregation')}

@@ -1,34 +1,85 @@
-// import React from 'react'
+import React, { useState } from 'react';
+import { ClipboardIcon, CheckIcon } from '@heroicons/react/solid';
+import { useClipboard } from 'use-clipboard-copy';
 
-// const MongoDBAggregations = () => {
-//   return (
-//     <div>
-//       Aggregation Pipelines
-// Aggregation operations allow you to group, sort, perform calculations, analyze data, and much more.
+const MongoDBAggregations = () => {
+    const clipboard = useClipboard();
+    const [copied, setCopied] = useState({});
 
-// Aggregation pipelines can have one or more "stages". The order of these stages are important. Each stage acts upon the results of the previous stage.
+    const handleCopy = (code, id) => {
+        clipboard.copy(code);
+        setCopied((prev) => ({ ...prev, [id]: true }));
+        setTimeout(() => {
+            setCopied((prev) => ({ ...prev, [id]: false }));
+        }, 2000);
+    };
 
-// Example
-// db.posts.aggregate([
-//   // Stage 1: Only find documents that have more than 1 like
-//   {
-//     $match: { likes: { $gt: 1 } }
-//   },
-//   // Stage 2: Group documents by category and sum each categories likes
-//   {
-//     $group: { _id: "$category", totalLikes: { $sum: "$likes" } }
-//   }
-// ])
-// Sample Data
-// To demonstrate the use of stages in a aggregation pipeline, we will load sample data into our database.
+    const basicAggregation = `db.orders.aggregate([
+  { $match: { status: "completed" } },
+  { $group: { _id: "$customerId", totalAmount: { $sum: "$amount" } } }
+]);`;
 
-// From the MongoDB Atlas dashboard, go to Databases. Click the ellipsis and select "Load Sample Dataset". This will load several sample datasets into your database.
+    const stagesExample = `[
+  { $match: { /* filter documents */ } },
+  { $group: { /* group documents */ } },
+  { $sort: { /* sort documents */ } }
+]`;
 
-// In the next sections we will explore several aggregation pipeline stages in more detail using this sample data.
+    const pipelineExample = `db.sales.aggregate([
+  { $match: { date: { $gte: ISODate("2024-01-01") } } },
+  { $group: { _id: "$region", totalSales: { $sum: "$amount" } } },
+  { $sort: { totalSales: -1 } }
+]);`;
 
+    return (
+        <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-6 text-gray-800 dark:text-gray-100">
 
-//     </div>
-//   )
-// }
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                MongoDB Aggregations process data records and return computed results. Aggregation operations group values from multiple documents together and perform operations like sum, average, min, max, etc.
+            </p>
 
-// export default MongoDBAggregations
+            <h2 className="text-xl sm:text-2xl font-semibold mt-6">Basic Aggregation Example</h2>
+            <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded">
+                <code className="block whitespace-pre">{basicAggregation}</code>
+                <button
+                    onClick={() => handleCopy(basicAggregation, 'basic')}
+                    className="absolute top-2 right-2 p-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                >
+                    {copied.basic ? <CheckIcon className="h-6 w-6 text-green-500" /> : <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+                </button>
+            </div>
+
+            <h2 className="text-xl sm:text-2xl font-semibold mt-6">Aggregation Stages</h2>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                An aggregation pipeline consists of multiple stages where each stage transforms the documents as they pass through the pipeline.
+            </p>
+            <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded">
+                <code className="block whitespace-pre">{stagesExample}</code>
+                <button
+                    onClick={() => handleCopy(stagesExample, 'stages')}
+                    className="absolute top-2 right-2 p-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                >
+                    {copied.stages ? <CheckIcon className="h-6 w-6 text-green-500" /> : <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+                </button>
+            </div>
+
+            <h2 className="text-xl sm:text-2xl font-semibold mt-6">Aggregation Pipeline Example</h2>
+            <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded">
+                <code className="block whitespace-pre">{pipelineExample}</code>
+                <button
+                    onClick={() => handleCopy(pipelineExample, 'pipeline')}
+                    className="absolute top-2 right-2 p-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                >
+                    {copied.pipeline ? <CheckIcon className="h-6 w-6 text-green-500" /> : <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+                </button>
+            </div>
+
+            <h2 className="text-xl sm:text-2xl font-semibold mt-6">Conclusion</h2>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                MongoDB's aggregation framework is powerful for data transformation and analysis. Learning it well can make your database queries much more efficient and expressive.
+            </p>
+        </div>
+    );
+};
+
+export default MongoDBAggregations;

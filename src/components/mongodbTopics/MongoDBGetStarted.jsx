@@ -20,7 +20,6 @@ const MongoDBGetStarted = () => {
 
   return (
     <div className="max-w-screen-lg mx-auto px-4 py-6 space-y-6 text-gray-800 dark:text-gray-100">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4">MongoDB</h1>
 
       <p className="text-base leading-relaxed">
         MongoDB is a document database that can be installed locally or hosted in the cloud.

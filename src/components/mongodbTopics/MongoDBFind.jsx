@@ -1,64 +1,141 @@
-// import React from 'react'
+import React, { useState } from 'react';
+import { ClipboardIcon, CheckIcon } from '@heroicons/react/solid';
+import { useClipboard } from 'use-clipboard-copy';
 
-// const MongoDBFind = () => {
-//   return (
-//     <div>
-//       Find Data
-// There are 2 methods to find and select data from a MongoDB collection, find() and findOne().
+const MongoDBFind = () => {
+    const clipboard = useClipboard();
+    const [copied, setCopied] = useState({});
 
-// find()
-// To select data from a collection in MongoDB, we can use the find() method.
+    const handleCopy = (codeSnippet, type) => {
+        try {
+            clipboard.copy(codeSnippet);
+            setCopied((prevState) => ({
+                ...prevState,
+                [type]: true,
+            }));
 
-// This method accepts a query object. If left empty, all documents will be returned.
+            setTimeout(() => {
+                setCopied((prevState) => ({
+                    ...prevState,
+                    [type]: false,
+                }));
+            }, 2000);
+        } catch (error) {
+            console.error("Failed to copy to clipboard:", error);
+        }
+    };
 
-// Example
-// db.posts.find()
-// findOne()
-// To select only one document, we can use the findOne() method.
+    // Code snippets for copying
+    const findExample = `db.posts.find()`;
+    const findOneExample = `db.posts.findOne()`;
+    const queryExample = `db.posts.find({category: "News"})`;
+    const projectionExample = `db.posts.find({}, {title: 1, date: 1})`;
+    const excludeIdExample = `db.posts.find({}, {_id: 0, title: 1, date: 1})`;
+    const excludeCategoryExample = `db.posts.find({}, {category: 0})`;
 
-// This method accepts a query object. If left empty, it will return the first document it finds.
+    return (
+        <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-6 text-gray-800 dark:text-gray-100">
 
-// Note: This method only returns the first match it finds.
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                There are 2 methods to find and select data from a MongoDB collection, <code>find()</code> and <code>findOne()</code>.
+            </p>
 
-// Example
-// db.posts.findOne()
-// Querying Data
-// To query, or filter, data we can include a query in our find() or findOne() methods.
+            <h3 className="text-lg sm:text-xl font-semibold mt-6">find()</h3>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                The <code>find()</code> method is used to select data from a collection. If no query is provided, it will return all documents.
+            </p>
+            <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm sm:text-base">
+                <code>{findExample}</code>
+                <button
+                    onClick={() => handleCopy(findExample, 'find')}
+                    className="absolute top-2 right-2 p-2 text-gray-800 dark:text-white bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                    aria-label="Copy find() Example"
+                >
+                    {copied.find ? <CheckIcon className="h-6 w-6 text-green-500" /> : <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+                </button>
+            </div>
 
-// Example
-// db.posts.find( {category: "News"} )
-// Projection
-// Both find methods accept a second parameter called projection.
+            <h3 className="text-lg sm:text-xl font-semibold mt-6">findOne()</h3>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                The <code>findOne()</code> method selects only one document. If no query is provided, it will return the first document it finds.
+            </p>
+            <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm sm:text-base">
+                <code>{findOneExample}</code>
+                <button
+                    onClick={() => handleCopy(findOneExample, 'findOne')}
+                    className="absolute top-2 right-2 p-2 text-gray-800 dark:text-white bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                    aria-label="Copy findOne() Example"
+                >
+                    {copied.findOne ? <CheckIcon className="h-6 w-6 text-green-500" /> : <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+                </button>
+            </div>
 
-// This parameter is an object that describes which fields to include in the results.
+            <h3 className="text-lg sm:text-xl font-semibold mt-6">Querying Data</h3>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                To filter data, we can include a query object in the <code>find()</code> or <code>findOne()</code> methods.
+            </p>
+            <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm sm:text-base">
+                <code>{queryExample}</code>
+                <button
+                    onClick={() => handleCopy(queryExample, 'query')}
+                    className="absolute top-2 right-2 p-2 text-gray-800 dark:text-white bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                    aria-label="Copy Query Example"
+                >
+                    {copied.query ? <CheckIcon className="h-6 w-6 text-green-500" /> : <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+                </button>
+            </div>
 
-// Note: This parameter is optional. If omitted, all fields will be included in the results.
+            <h3 className="text-lg sm:text-xl font-semibold mt-6">Projection</h3>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                Both <code>find()</code> and <code>findOne()</code> accept a second parameter for projections, which allows us to select specific fields to include or exclude in the result.
+            </p>
+            <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm sm:text-base">
+                <code>{projectionExample}</code>
+                <button
+                    onClick={() => handleCopy(projectionExample, 'projection')}
+                    className="absolute top-2 right-2 p-2 text-gray-800 dark:text-white bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                    aria-label="Copy Projection Example"
+                >
+                    {copied.projection ? <CheckIcon className="h-6 w-6 text-green-500" /> : <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+                </button>
+            </div>
 
-// Example
-// This example will only display the title and date fields in the results.
+            <h3 className="text-lg sm:text-xl font-semibold mt-6">Excluding the _id Field</h3>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                By default, the <code>_id</code> field is always included in the results. You can exclude it by specifying <code>{'_id: 0'}</code> in the projection.
+            </p>
+            <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm sm:text-base">
+                <code>{excludeIdExample}</code>
+                <button
+                    onClick={() => handleCopy(excludeIdExample, 'excludeId')}
+                    className="absolute top-2 right-2 p-2 text-gray-800 dark:text-white bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                    aria-label="Copy Exclude _id Example"
+                >
+                    {copied.excludeId ? <CheckIcon className="h-6 w-6 text-green-500" /> : <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+                </button>
+            </div>
 
-// db.posts.find({}, {title: 1, date: 1})
-// Notice that the _id field is also included. This field is always included unless specifically excluded.
+            <h3 className="text-lg sm:text-xl font-semibold mt-6">Excluding Specific Fields</h3>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                You can also exclude other fields from the results. For example, if you want to exclude the <code>category</code> field, you can specify <code>{'category: 0'}</code>.
+            </p>
+            <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm sm:text-base">
+                <code>{excludeCategoryExample}</code>
+                <button
+                    onClick={() => handleCopy(excludeCategoryExample, 'excludeCategory')}
+                    className="absolute top-2 right-2 p-2 text-gray-800 dark:text-white bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                    aria-label="Copy Exclude Category Example"
+                >
+                    {copied.excludeCategory ? <CheckIcon className="h-6 w-6 text-green-500" /> : <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+                </button>
+            </div>
 
-// We use a 1 to include a field and 0 to exclude a field.
+            <h2 className="text-xl sm:text-2xl font-semibold mt-6">Conclusion</h2>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                With these methods, you can efficiently query and project specific data from MongoDB collections, helping you tailor your queries to your needs.
+            </p>
+        </div>
+    );
+};
 
-// Example
-// This time, let's exclude the _id field.
-
-// db.posts.find({}, {_id: 0, title: 1, date: 1})
-// Note: You cannot use both 0 and 1 in the same object. The only exception is the _id field. You should either specify the fields you would like to include or the fields you would like to exclude.
-
-// Let's exclude the date category field. All other fields will be included in the results.
-
-// Example
-// db.posts.find({}, {category: 0})
-// We will get an error if we try to specify both 0 and 1 in the same object.
-
-// Example
-// db.posts.find({}, {title: 1, date: 0})
-
-//     </div>
-//   )
-// }
-
-// export default MongoDBFind
+export default MongoDBFind;

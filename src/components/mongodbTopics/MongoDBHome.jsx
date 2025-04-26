@@ -38,6 +38,7 @@ const MongoDBHome = () => {
       <p className="text-base md:text-lg leading-relaxed">
         Documents can hold numbers, strings, booleans, arrays, or even nested documents.
       </p>
+      
       <div className="relative bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-4 rounded text-sm sm:text-base whitespace-pre-wrap">
         <code>{documentExample}</code>
         <button
