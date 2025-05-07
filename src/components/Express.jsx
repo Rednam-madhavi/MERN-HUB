@@ -1,8 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { X } from "lucide-react";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import NotFound from "./NotFound";
 
+// Import all topic components
+import BuildYourFirstRouterInNodejsWithExpress from "./expressTopics/BuildYourFirstRouterInNodejsWithExpress";
+import EnableDebuggingInExpressApp from "./expressTopics/EnableDebuggingInExpressApp";
+import ErrorHandlingInExpress from "./expressTopics/ErrorHandlingInExpress";
+import ExpressJsonFunction from "./expressTopics/ExpressJsonFunction";
+import ExpressRawFunction from "./expressTopics/ExpressRawFunction";
+import ExpressRouterFunction from "./expressTopics/ExpressRouterFunction";
+import ExpressStaticFunction from "./expressTopics/ExpressStaticFunction";
+import ExpressTextFunction from "./expressTopics/ExpressTextFunction";
+import ExpressUrlencodedFunction from "./expressTopics/ExpressUrlencodedFunction";
+import IntroductionToExpress from "./expressTopics/IntroductionToExpress";
+import MiddlewareInExpress from "./expressTopics/MiddlewareInExpress";
+import PrintHelloWorldUsingExpressJS from "./expressTopics/PrintHelloWorldUsingExpressJS";
+import RoutingPathForExpressJS from "./expressTopics/RoutingPathForExpressJS";
+import ServingStaticFilesInExpressJS from "./expressTopics/ServingStaticFilesInExpressJS";
+import StepsToCreateAnExpressjsApplication from "./expressTopics/StepsToCreateAnExpressjsApplication";
+import TemplatingUsingExpressJSInNodejs from "./expressTopics/TemplatingUsingExpressJSInNodejs";
+import UseOfReqAndResObjectsInExpressJS from "./expressTopics/UseOfReqAndResObjectsInExpressJS";
+
+// Topics structure
 const topics = [
     {
         heading: "Express Basics",
@@ -27,19 +48,37 @@ const topics = [
     }
 ];
 
+const topicComponents = {
+    "Introduction to Express": <IntroductionToExpress />,
+    "Steps to Create an Express.js Application": <StepsToCreateAnExpressjsApplication />,
+    "Print Hello World using Express JS": <PrintHelloWorldUsingExpressJS />,
+    "Build Your First Router in Node.js with Express": <BuildYourFirstRouterInNodejsWithExpress />,
+    "Middleware in Express": <MiddlewareInExpress />,
+    "Routing Path for ExpressJS": <RoutingPathForExpressJS />,
+    "Use of req and res objects in Express JS": <UseOfReqAndResObjectsInExpressJS />,
+    "Error Handling in Express": <ErrorHandlingInExpress />,
+    "Templating using ExpressJS in Node.js": <TemplatingUsingExpressJSInNodejs />,
+    "Serving Static Files in ExpressJS": <ServingStaticFilesInExpressJS />,
+    "Enable Debugging in Express App": <EnableDebuggingInExpressApp />,
+    "Express express.json() Function": <ExpressJsonFunction />,
+    "Express express.raw() Function": <ExpressRawFunction />,
+    "Express express.Router() Function": <ExpressRouterFunction />,
+    "Express express.static() Function": <ExpressStaticFunction />,
+    "Express express.text() Function": <ExpressTextFunction />,
+    "Express express.urlencoded() Function": <ExpressUrlencodedFunction />
+};
+
 const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const navigate = useNavigate();
     const { slug } = useParams();
     const [selectedTopic, setSelectedTopic] = useState("Introduction to Express");
+    const contentRef = useRef(null);
 
-    // ✅ Generate slugs correctly for all subtopics
-    const generateSlug = (topic) =>
-        topic.toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-");
+    const generateSlug = (topic) => topic.toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-");
 
     const allSubtopics = topics.flatMap((topic) => topic.subtopics);
     const currentIndex = allSubtopics.indexOf(selectedTopic);
 
-    // ✅ Find the correct topic by slug
     const findTopicBySlug = (slug) => {
         for (const topic of topics) {
             for (const subtopic of topic.subtopics) {
@@ -53,12 +92,18 @@ const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
         if (slug) setSelectedTopic(findTopicBySlug(slug));
     }, [slug]);
 
-    // ✅ Navigation Handlers
+    const scrollToTop = () => {
+        if (contentRef.current) {
+            contentRef.current.scrollTop = 0;
+        }
+    };
+
     const handleNext = () => {
         if (currentIndex < allSubtopics.length - 1) {
             const nextTopic = allSubtopics[currentIndex + 1];
             navigate(`/express/${generateSlug(nextTopic)}`);
             setSelectedTopic(nextTopic);
+            scrollToTop();
         }
     };
 
@@ -67,17 +112,25 @@ const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
             const prevTopic = allSubtopics[currentIndex - 1];
             navigate(`/express/${generateSlug(prevTopic)}`);
             setSelectedTopic(prevTopic);
+            scrollToTop();
         }
+    };
+
+    const handleSidebarClick = (subtopic) => {
+        navigate(`/express/${generateSlug(subtopic)}`);
+        setSelectedTopic(subtopic);
+        setIsSidebarOpen(false);
+        scrollToTop();
     };
 
     return (
         <div className="flex h-screen relative">
-            {/* Sidebar for Mobile */}
+            {/* Mobile sidebar */}
             {isSidebarOpen && (
-                <div className="fixed inset-0 bg-white dark:bg-gray-900 text-black dark:text-white p-4 z-50 flex flex-col">
-                    <div className="flex justify-between items-center border-b pb-2">
+                <div className="fixed inset-0 bg-white dark:bg-gray-900 text-black dark:text-white p-4 z-50 flex flex-col shadow-lg transition-transform transform md:w-80">
+                    <div className="flex justify-between items-center border-b pb-2 mb-2">
                         <h2 className="text-xl font-semibold">Topics</h2>
-                        <button onClick={() => setIsSidebarOpen(false)}>
+                        <button onClick={() => setIsSidebarOpen(false)} aria-label="Close sidebar">
                             <X size={28} />
                         </button>
                     </div>
@@ -91,13 +144,10 @@ const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                             <li
                                                 key={subtopic}
                                                 className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
-                                                        ? "bg-gray-100 dark:bg-gray-700"
-                                                        : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
+                                                    ? "bg-gray-100 dark:bg-gray-700"
+                                                    : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
                                                     }`}
-                                                onClick={() => {
-                                                    navigate(`/express/${generateSlug(subtopic)}`);
-                                                    setIsSidebarOpen(false);
-                                                }}
+                                                onClick={() => handleSidebarClick(subtopic)}
                                             >
                                                 {subtopic}
                                             </li>
@@ -110,7 +160,7 @@ const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 </div>
             )}
 
-            {/* Sidebar for Desktop */}
+            {/* Desktop sidebar */}
             <div className="hidden md:block bg-white dark:bg-gray-900 text-black dark:text-white p-4 overflow-y-auto md:w-1/4" style={{ height: "100vh" }}>
                 <ul className="space-y-2">
                     {topics.map(({ heading, subtopics }) => (
@@ -121,10 +171,10 @@ const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                     <li
                                         key={subtopic}
                                         className={`cursor-pointer p-2 pl-6 rounded-md text-sm md:text-base ${selectedTopic === subtopic
-                                                ? "bg-gray-100 dark:bg-gray-700"
-                                                : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
+                                            ? "bg-gray-100 dark:bg-gray-700"
+                                            : "hover:bg-gray-600 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black"
                                             }`}
-                                        onClick={() => navigate(`/express/${generateSlug(subtopic)}`)}
+                                        onClick={() => handleSidebarClick(subtopic)}
                                     >
                                         {subtopic}
                                     </li>
@@ -135,36 +185,32 @@ const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 </ul>
             </div>
 
-            {/* Main Content Area */}
-            <div className="flex-1 p-4 md:p-6 h-screen overflow-y-auto dark:bg-gray-800 dark:text-white">
-                <h1 className="text-2xl md:text-4xl font-semibold mb-4 capitalize">
-                    {selectedTopic}
-                </h1>
-                <p>Content related to {selectedTopic} will be displayed here.</p>
-
-                {/* Previous & Next Buttons */}
-                <div className="flex justify-between p-2 mt-6">
-                    <button
-                        onClick={handlePrevious}
-                        disabled={currentIndex === 0}
-                        className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"
-                            }`}
-                    >
-                        <MdArrowBackIos size={20} /> Previous
+            {/* Content area */}
+            <div className="flex-1 p-8 md:p-16 overflow-y-auto" ref={contentRef}>
+                <div className="flex justify-between items-center mb-8">
+                    <button className="md:hidden" onClick={() => setIsSidebarOpen(true)}>
+                        <span className="font-bold text-lg">☰ Topics</span>
                     </button>
-
-                    <button
-                        onClick={handleNext}
-                        disabled={currentIndex === allSubtopics.length - 1}
-                        className={`flex items-center bg-gray-700 text-white w-auto dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === allSubtopics.length - 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"
-                            }`}
-                    >
-                        Next <MdArrowForwardIos size={20} />
-                    </button>
+                    <div className="flex space-x-4">
+                        <button
+                            className="p-2 rounded bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+                            onClick={handlePrevious}
+                        >
+                            <MdArrowBackIos size={24} />
+                        </button>
+                        <button
+                            className="p-2 rounded bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+                            onClick={handleNext}
+                        >
+                            <MdArrowForwardIos size={24} />
+                        </button>
+                    </div>
                 </div>
+                {topicComponents[selectedTopic]}
             </div>
         </div>
     );
 };
 
 export default ExpressJs;
+
