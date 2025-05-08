@@ -59,14 +59,13 @@ const topics = [
 const allSubtopics = topics.flatMap(topic => topic.subtopics);
 
 const topicComponents = {
-    "Information & History": <CSSIntroduction />,
-    "Your first CSS website": <CSSFirstWebsite />,
-    "How CSS works": <CSSHowItWorks />,
-    "Syntax of CSS": <CSSSyntax />,
-    "Ways to add CSS": <CSSWaysToAdd />,
-    "CSS Selectors": <CSSSelectors />,
-    "CSS Comments": <CSSComments />,
-    "CSS Specificity": <CSSSpecificity />,
+    // "Information & History": <CSSIntroduction />,
+    // "Your first CSS website": <CSSFirstWebsite />,
+    // "How CSS works": <CSSHowItWorks />,
+    // "Syntax of CSS": <CSSSyntax />,
+    // "Ways to add CSS": <CSSWaysToAdd />,
+    // "CSS Selectors": <CSSSelectors />,
+    // "CSS Specificity": <CSSSpecificity />,
     // Add other topics here similarly
     "CSS 2D Transform": <CSS2DTransform />,
     "CSS Animations": <CSSAnimations />,
@@ -76,6 +75,7 @@ const topicComponents = {
     "CSS Buttons": <CSSButtons />,
     "CSS Colors": <CSSColors />,
     "CSS Combinators": <CSSCombinators />,
+    "CSS Comments": <CSSComments />,
     "CSS Cursors": <CSSCursors />,
     "CSS Images": <CSSImages />,
     "CSS Video Embedding": <CSSVideoEmbedding />,
