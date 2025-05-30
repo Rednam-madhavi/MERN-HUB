@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { X } from "lucide-react";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import NotFound from "./NotFound";
 
 // Import all JavaScript topic components
 import Abstraction from "./javaScriptTopics/Abstraction.jsx";
@@ -9,7 +10,7 @@ import ArraysAndArrayMethods from "./javaScriptTopics/ArraysAndArrayMethods.jsx"
 import Boolean from "./javaScriptTopics/Boolean.jsx";
 import Class from "./javaScriptTopics/Class.jsx";
 import Constructor from "./javaScriptTopics/Constructor.jsx";
-import Date from "./javaScriptTopics/Date.jsx";
+import DateComponent from "./javaScriptTopics/Date.jsx";
 import DocumentObject from "./javaScriptTopics/DocumentObject.jsx";
 import Encapsulation from "./javaScriptTopics/Encapsulation.jsx";
 import ForLoops from "./javaScriptTopics/ForLoops.jsx";
@@ -27,10 +28,10 @@ import JSExecution from "./javaScriptTopics/JSExecution.jsx";
 import JSIntroduction from "./javaScriptTopics/JSIntroduction.jsx";
 import LoopsWithArrays from "./javaScriptTopics/LoopsWithArrays.jsx";
 import MapFilterAndReduce from "./javaScriptTopics/MapFilterAndReduce.jsx";
-import Math from "./javaScriptTopics/Math.jsx";
+import MathComponent from "./javaScriptTopics/Math.jsx";
 import NavigatorObject from "./javaScriptTopics/NavigatorObject.jsx";
 import NodeJsInstallation from "./javaScriptTopics/NodeJsInstallation.jsx";
-import Number from "./javaScriptTopics/Number.jsx";
+import NumberComponent from "./javaScriptTopics/Number.jsx";
 import Objects from "./javaScriptTopics/Objects.jsx";
 import OperatorsAndExpressions from "./javaScriptTopics/OperatorsAndExpressions.jsx";
 import OuterHTML from "./javaScriptTopics/OuterHTML.jsx";
@@ -47,10 +48,9 @@ import WhatAreVariables from "./javaScriptTopics/WhatAreVariables.jsx";
 import WhileLoop from "./javaScriptTopics/WhileLoop.jsx";
 import WindowObject from "./javaScriptTopics/WindowObject.jsx";
 
-// Topics structure
 const topics = [
   { heading: "JS Introduction", subtopics: ["JS Introduction", "JS Execution", "Node.js Installation"] },
-  { heading: "JavaScript Variables", subtopics: ["What are Variables?", "Variable Naming Rules", "Primitives and Objects", "Operators and Expressions", "var vs let vs const"] },
+  { heading: "JavaScript Variables", subtopics: ["What are Variables", "Variable Naming Rules", "Primitives and Objects", "Operators and Expressions", "var vs let vs const"] },
   { heading: "JavaScript Basics", subtopics: ["If else conditionals", "If else ladder", "Switch case", "Ternary Operator", "For Loops", "While Loop", "Functions"] },
   { heading: "JavaScript Objects", subtopics: ["Strings", "Arrays and Array Methods", "Loops with Arrays", "Map, Filter and Reduce", "Date", "Math", "Number", "Boolean"] },
   { heading: "DOM & BOM", subtopics: ["Window Object", "History Object", "Navigator Object", "Screen Object", "Document Object", "getElementById", "getElementsByClassName", "getElementsByName", "getElementsByTagName", "innerHTML", "outerHTML"] },
@@ -61,7 +61,7 @@ const topicComponents = {
   "JS Introduction": <JSIntroduction />,
   "JS Execution": <JSExecution />,
   "Node.js Installation": <NodeJsInstallation />,
-  "What are Variables?": <WhatAreVariables />,
+  "What are Variables": <WhatAreVariables />,
   "Variable Naming Rules": <VariableNamingRules />,
   "Primitives and Objects": <PrimitivesAndObjects />,
   "Operators and Expressions": <OperatorsAndExpressions />,
@@ -77,9 +77,9 @@ const topicComponents = {
   "Arrays and Array Methods": <ArraysAndArrayMethods />,
   "Loops with Arrays": <LoopsWithArrays />,
   "Map, Filter and Reduce": <MapFilterAndReduce />,
-  "Date": <Date />,
-  "Math": <Math />,
-  "Number": <Number />,
+  "Date": <DateComponent />,
+  "Math": <MathComponent />,
+  "Number": <NumberComponent />,
   "Boolean": <Boolean />,
   "Window Object": <WindowObject />,
   "History Object": <HistoryObject />,
@@ -195,7 +195,7 @@ const JavaScript = ({ isSidebarOpen, setIsSidebarOpen }) => {
       )}
 
       {/* Desktop sidebar */}
-      <div className="hidden md:flex w-80 bg-white dark:bg-gray-900 text-black dark:text-white p-4 shadow-lg overflow-y-auto">
+      <div className="hidden md:block bg-white dark:bg-gray-900 text-black dark:text-white p-4 overflow-y-auto md:w-1/4" style={{ height: "100vh" }}>
         <ul className="space-y-2">
           {topics.map(({ heading, subtopics }) => (
             <div key={heading}>
@@ -219,28 +219,31 @@ const JavaScript = ({ isSidebarOpen, setIsSidebarOpen }) => {
         </ul>
       </div>
 
-      {/* Content Area */}
-      <div className="flex-1 p-8 md:p-16 overflow-y-auto" ref={contentRef}>
-        <div className="flex justify-between items-center mb-8">
-          <button className="md:hidden" onClick={() => setIsSidebarOpen(true)}>
-            <span className="font-bold text-lg">☰ Topics</span>
-          </button>
-          <div className="flex space-x-4">
-            <button
-              className="p-2 rounded bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
-              onClick={handlePrevious}
-            >
-              <MdArrowBackIos size={24} />
-            </button>
-            <button
-              className="p-2 rounded bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
-              onClick={handleNext}
-            >
-              <MdArrowForwardIos size={24} />
-            </button>
-          </div>
+      {/* Content area */}
+      <div ref={contentRef} className="flex-1 p-4 md:p-6 h-screen overflow-y-auto dark:bg-gray-800 dark:text-white">
+        <h1 className="text-2xl md:text-4xl font-semibold capitalize">{selectedTopic}</h1>
+
+        <div className="mt-4">
+          {topicComponents[selectedTopic] || <NotFound />}
         </div>
-        {topicComponents[selectedTopic]}
+
+        <div className="flex justify-between p-2 pb-0 mt-4">
+          <button
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            className={`flex items-center bg-gray-700 text-white dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
+          >
+            <MdArrowBackIos size={20} /> Previous
+          </button>
+
+          <button
+            onClick={handleNext}
+            disabled={currentIndex === allSubtopics.length - 1}
+            className={`flex items-center bg-gray-700 text-white dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === allSubtopics.length - 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
+          >
+            Next <MdArrowForwardIos size={20} />
+          </button>
+        </div>
       </div>
     </div>
   );
