@@ -5,7 +5,6 @@ const IntroductionToExpress = () => {
 
     return (
         <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-8 text-gray-800 dark:text-gray-100">
-
             <div className="space-y-4">
                 <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200">
                     What is Express?
@@ -87,7 +86,7 @@ const IntroductionToExpress = () => {
             </p>
 
             <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
-                Next Chapter: Setting Up Your First Express App
+                Next Chapter: Steps to Create an Express.js Application
             </p>
         </div>
     );

@@ -68,13 +68,13 @@ const topicComponents = {
     "Express express.urlencoded() Function": <ExpressUrlencodedFunction />
 };
 
-const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
+const Express = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const navigate = useNavigate();
     const { slug } = useParams();
-    const [selectedTopic, setSelectedTopic] = useState("Introduction to Express");
+    const [selectedTopic, setSelectedTopic] = useState("Build Your First Router in Node.js with Express");
     const contentRef = useRef(null);
 
-    const generateSlug = (topic) => topic.toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-");
+    const generateSlug = (topic) => topic.toLowerCase().replace(/\s+/g, "-").replace(/\./g, "");
 
     const allSubtopics = topics.flatMap((topic) => topic.subtopics);
     const currentIndex = allSubtopics.indexOf(selectedTopic);
@@ -85,7 +85,7 @@ const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 if (generateSlug(subtopic) === slug) return subtopic;
             }
         }
-        return "Introduction to Express";
+        return "Build Your First Router in Node.js with Express";
     };
 
     useEffect(() => {
@@ -93,9 +93,7 @@ const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
     }, [slug]);
 
     const scrollToTop = () => {
-        if (contentRef.current) {
-            contentRef.current.scrollTop = 0;
-        }
+        if (contentRef.current) contentRef.current.scrollTop = 0;
     };
 
     const handleNext = () => {
@@ -186,31 +184,33 @@ const ExpressJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
             </div>
 
             {/* Content area */}
-            <div className="flex-1 p-8 md:p-16 overflow-y-auto" ref={contentRef}>
-                <div className="flex justify-between items-center mb-8">
-                    <button className="md:hidden" onClick={() => setIsSidebarOpen(true)}>
-                        <span className="font-bold text-lg">☰ Topics</span>
-                    </button>
-                    <div className="flex space-x-4">
-                        <button
-                            className="p-2 rounded bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
-                            onClick={handlePrevious}
-                        >
-                            <MdArrowBackIos size={24} />
-                        </button>
-                        <button
-                            className="p-2 rounded bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
-                            onClick={handleNext}
-                        >
-                            <MdArrowForwardIos size={24} />
-                        </button>
-                    </div>
+            <div ref={contentRef} className="flex-1 p-4 md:p-6 h-screen overflow-y-auto dark:bg-gray-800 dark:text-white">
+                <h1 className="text-2xl md:text-4xl font-semibold capitalize">{selectedTopic}</h1>
+
+                <div className="mt-4">
+                    {topicComponents[selectedTopic] || <NotFound />}
                 </div>
-                {topicComponents[selectedTopic]}
+
+                <div className="flex justify-between p-2 pb-0 mt-4">
+                    <button
+                        onClick={handlePrevious}
+                        disabled={currentIndex === 0}
+                        className={`flex items-center bg-gray-700 text-white dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
+                    >
+                        <MdArrowBackIos size={20} /> Previous
+                    </button>
+
+                    <button
+                        onClick={handleNext}
+                        disabled={currentIndex === allSubtopics.length - 1}
+                        className={`flex items-center bg-gray-700 text-white dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === allSubtopics.length - 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
+                    >
+                        Next <MdArrowForwardIos size={20} />
+                    </button>
+                </div>
             </div>
         </div>
     );
 };
 
-export default ExpressJs;
-
+export default Express;
