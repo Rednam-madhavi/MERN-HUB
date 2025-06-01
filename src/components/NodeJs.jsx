@@ -21,7 +21,6 @@ import NodejsEmail from "./nodeTopics/NodejsEmail";
 import NodejsEvents from "./nodeTopics/NodejsEvents";
 import NodejsFileSystem from "./nodeTopics/NodejsFileSystem";
 import NodejsGetStarted from "./nodeTopics/NodejsGetStarted";
-import NodejsHOME from "./nodeTopics/NodejsHOME";
 import NodejsHTTPModule from "./nodeTopics/NodejsHTTPModule";
 import NodejsIntro from "./nodeTopics/NodejsIntro";
 import NodejsModules from "./nodeTopics/NodejsModules";
@@ -34,7 +33,7 @@ const topics = [
     {
         heading: "Node.js Tutorial",
         subtopics: [
-            "Node.js HOME", "Node.js Intro", "Node.js Get Started", "Node.js Modules", "Node.js HTTP Module", "Node.js File System",
+            "Node.js Intro", "Node.js Get Started", "Node.js Modules", "Node.js HTTP Module", "Node.js File System",
             "Node.js URL Module", "Node.js NPM", "Node.js Events", "Node.js Upload Files", "Node.js Email"
         ]
     },
@@ -48,7 +47,6 @@ const topics = [
 ];
 
 const topicComponents = {
-    "Node.js HOME": <NodejsHOME />,
     "Node.js Intro": <NodejsIntro />,
     "Node.js Get Started": <NodejsGetStarted />,
     "Node.js Modules": <NodejsModules />,
@@ -76,7 +74,7 @@ const topicComponents = {
 const NodeJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const navigate = useNavigate();
     const { slug } = useParams();
-    const [selectedTopic, setSelectedTopic] = useState("Node.js HOME");
+    const [selectedTopic, setSelectedTopic] = useState("Node.js Intro");
     const contentRef = useRef(null);
 
     const generateSlug = (topic) => topic.toLowerCase().replace(/\s+/g, "-");
@@ -90,7 +88,7 @@ const NodeJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 if (generateSlug(subtopic) === slug) return subtopic;
             }
         }
-        return "Node.js HOME";
+        return "Node.js Intro";
     };
 
     useEffect(() => {
@@ -202,10 +200,17 @@ const NodeJs = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     <button
                         onClick={handlePrevious}
                         disabled={currentIndex === 0}
-                        className={`flex items-center bg-gray-700 text-white dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105
-duration-300 ${currentIndex === 0 && "opacity-50 cursor-not-allowed"}} > <MdArrowBackIos className="mr-2" /> Previous </button> <button onClick={handleNext} disabled={currentIndex === allSubtopics.length - 1} className={flex items-center bg-gray-700 text-white dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 duration-300 ${currentIndex === allSubtopics.length - 1 && "opacity-50 cursor-not-allowed"}`}
+                        className={`flex items-center bg-gray-700 text-white dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
                     >
-                        Next <MdArrowForwardIos className="ml-2" />
+                        <MdArrowBackIos size={20} /> Previous
+                    </button>
+
+                    <button
+                        onClick={handleNext}
+                        disabled={currentIndex === allSubtopics.length - 1}
+                        className={`flex items-center bg-gray-700 text-white dark:bg-gray-300 dark:text-black font-semibold rounded-xl p-2 shadow-lg transition-transform transform hover:scale-105 ${currentIndex === allSubtopics.length - 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-900 dark:hover:bg-gray-200"}`}
+                    >
+                        Next <MdArrowForwardIos size={20} />
                     </button>
                 </div>
             </div>
