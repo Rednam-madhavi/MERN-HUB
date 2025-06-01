@@ -1,59 +1,89 @@
-import React from 'react'
+import React from 'react';
+import intro1 from '../../assets/css/intro1.png';
+import intro2 from '../../assets/css/intro2.png';
 
 const InformationAndHistory = () => {
-    return (
-        <div></div>
-        //     <div>
-        //       What is CSS?
-        // CSS stands for Cascading Style Sheets. It is a stylesheet language that is used to describe the visual presentation of a web page written in HTML (Hypertext Markup Language).
+  return (
+    <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-6 text-gray-800 dark:text-gray-100">
 
-        // HTML creates the structure of the page, while CSS adds styling to that structure. This tutorial assumes that you have prior knowledge of HTML. If that's not the case, you can follow the HTML tutorial first.
+      <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+        CSS stands for <strong>Cascading Style Sheets</strong>. It’s a stylesheet language used to describe the appearance of an HTML document. While HTML creates the structure of the page, CSS handles how that structure looks—such as layout, colors, and fonts.
+      </p>
 
-        // Why the word "cascade"?
-        // The term "cascade" refers to the priority scheme determining which CSS rules are applied when multiple rules target an element. This scheme takes into account specificity and inheritance, ensuring that the most specific and latest rules are applied.
+      <h2 className="text-xl sm:text-2xl font-semibold">Why the word “Cascade”?</h2>
+      <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+        The “cascade” in CSS refers to the hierarchy of rules and how the browser determines which styles to apply when multiple rules target the same element. This process considers specificity, inheritance, and order of declaration.
+      </p>
 
-        // Why use CSS?
-        // CSS is used to provide styling to HTML elements, making web pages visually appealing and user-friendly.
+      <h2 className="text-xl sm:text-2xl font-semibold">Why Use CSS?</h2>
+      <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+        CSS allows developers to design visually appealing and user-friendly web pages. It separates content from design, enabling easier maintenance and greater control over layout and responsiveness.
+      </p>
 
-        // Consider the video below to understand how CSS can transform a webpage: Your browser does not support the video tag. Let us take this HTML page for example. Here is how it looks without CSS:
+      <h2 className="text-xl sm:text-2xl font-semibold">Visual Transformation Example:</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <figure className="text-center">
+          <figcaption className="font-medium mb-2">Without CSS</figcaption>
+          <img src={intro1} alt="HTML page without CSS styling" className="w-full h-48 object-cover rounded-lg shadow" />
+        </figure>
+        <figure className="text-center">
+          <figcaption className="font-medium mb-2">With CSS</figcaption>
+          <img src={intro2} alt="HTML page with CSS styling" className="w-full h-48 object-cover rounded-lg shadow" />
+        </figure>
+      </div>
 
-        // cwh tutorial image
+      <h2 className="text-xl sm:text-2xl font-semibold">Analogy to Understand CSS</h2>
+      <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+        Imagine reading a book with plain, unformatted text—uninspiring and hard to read. Now imagine the same book with headings, fonts, colors, and layout. That’s the difference CSS makes on a webpage.
+      </p>
 
-        // This is how it looks after adding CSS:
+      <h2 className="text-xl sm:text-2xl font-semibold">How Does CSS Work?</h2>
+      <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+        CSS targets HTML elements using selectors and applies rules to them. Each rule includes a property and a value.
+      </p>
 
-        // cwh tutorial image
+      <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded-md font-mono text-sm mt-2 overflow-auto">
+        <code>
+          selector &#123;{'\n'}
+          &nbsp;&nbsp;property: value;{'\n'}
+          &#125;
+        </code>
+      </pre>
 
-        // Analogy to Understand CSS
-        // Imagine reading a book with only plain text. It's quite dull, isn't it? Now picture a book enriched with different colors, fonts, and styles. That's what CSS does to a webpage.
+      <h2 className="text-xl sm:text-2xl font-semibold">Try This:</h2>
+      <ul className="list-disc pl-5 text-sm sm:text-base md:text-lg leading-relaxed space-y-2">
+        <li>Right-click on any webpage and choose “Inspect” or press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd></li>
+        <li>Use the element selector (arrow icon) to examine page elements</li>
+        <li>Check out the applied CSS rules in the Styles tab</li>
+      </ul>
 
-        // How does CSS work?
-        // CSS operates by selecting HTML elements and applying styles to them. Styles dictate the appearance of elements on a webpage. You can target HTML elements, classes, or IDs, defining properties like colors, fonts, margins, etc.
+      <h2 className="text-xl sm:text-2xl font-semibold">Key Features of CSS</h2>
+      <ul className="list-disc pl-5 text-sm sm:text-base md:text-lg leading-relaxed space-y-2">
+        <li>Handles layout and styling of web pages</li>
+        <li>Works with HTML and XML documents</li>
+        <li>Supports responsive design for different screens</li>
+        <li>Enables effects like hover states and animations</li>
+        <li>Modular and updatable without version numbers</li>
+        <li>Reusable rules across multiple HTML documents</li>
+      </ul>
 
-        // /* Example of a CSS rule */
-        // selector {
-        //     property: value;
-        // }
+      <h2 className="text-xl sm:text-2xl font-semibold">A Brief History</h2>
+      <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+        CSS was proposed by Håkon Wium Lie in 1994 to improve the appearance of web documents. Early websites were mostly plain text used by researchers. As the web evolved, so did the need for better visual design—thus CSS was born.
+      </p>
 
-        // Quick Follow-Up Task:
-        // Right-click on the screen and select "Inspect" or press (Ctrl + Shift + C).
-        // Click on the arrow icon in the top-left corner of the inspection pane.
-        // Select elements on the page to toggle the CSS rules.
-        // Key Features of CSS:
-        // Styles and layouts of web pages.
-        // Works alongside HTML and XML documents.
-        // Enables responsive design for different screen sizes.
-        // Supports interactive effects like hover states and animations.
-        // CSS is now modularized, with ongoing updates rather than version numbers.
-        // Allows reusability of the same rules across multiple HTML documents.
-        // A Bit of History
-        // CSS was created by Håkon Wium Lie to enhance the visual aspects of websites. Initially, websites were mainly used by researchers and lacked visual appeal. As websites became more widespread, the need for better design grew.
+      <h2 className="text-xl sm:text-2xl font-semibold">References</h2>
+      <ul className="list-disc pl-5 text-sm sm:text-base md:text-lg leading-relaxed space-y-2">
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" className="text-gray-500 underline" target="_blank" rel="noreferrer">MDN HTML Tutorial</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/CSS" className="text-gray-500 underline" target="_blank" rel="noreferrer">CSS on Wikipedia</a></li>
+        <li><a href="https://www.w3.org/Style/CSS/specs.en.html" className="text-gray-500 underline" target="_blank" rel="noreferrer">W3C CSS Specifications</a></li>
+      </ul>
 
-        // Important References:
-        // For beginners, start with the HTML tutorial.
-        // For more insights, check out CSS on Wikipedia.
-        // For advanced users, the W3C CSS Specifications is a valuable resource.
-        // </div>
-    )
-}
+      <p className="text-center text-base mt-10 font-medium">
+        Next Chapter: Your First CSS Website
+      </p>
+    </div>
+  );
+};
 
-export default InformationAndHistory
+export default InformationAndHistory;

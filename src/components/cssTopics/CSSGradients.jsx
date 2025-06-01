@@ -128,6 +128,9 @@ const CSSGradients = () => {
                     className="rounded-md shadow-md w-full sm:w-3/4 lg:w-1/2"
                 />
             </section>
+            <p className="text-center text-base mt-10 font-medium">
+                Next Chapter: CSS Inherit
+            </p>
         </div>
     );
 };

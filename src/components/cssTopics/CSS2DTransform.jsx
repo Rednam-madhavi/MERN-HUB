@@ -20,7 +20,6 @@ const CSS2DTransform = () => {
 
     return (
         <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-12 text-gray-800 dark:text-gray-100">
-
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 CSS 2D Transforms allow you to modify the coordinate space of elements to achieve rotation, scaling, translation, or skewing effects in two dimensions.
             </p>

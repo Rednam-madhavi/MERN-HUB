@@ -61,6 +61,9 @@ const CSSInherit = () => {
                     className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md"
                 />
             </div>
+            <p className="text-center text-base mt-10 font-medium">
+                Next Chapter: CSS Gradients
+            </p>
         </div>
     );
 };

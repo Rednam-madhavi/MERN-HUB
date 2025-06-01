@@ -5,7 +5,6 @@ import keyframes from '../../assets/css/animation1.webp';
 import keyframes2 from '../../assets/css/animation2.gif';
 import shorthand from '../../assets/css/animation3.gif';
 
-
 const CSSAnimations = () => {
     const [copied, setCopied] = useState(null);
     const clipboard = useClipboard();
@@ -275,6 +274,10 @@ const CSSAnimations = () => {
                     className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md"
                 />
             </div>
+
+            <p className="text-center text-base mt-10 font-medium">
+                End of CSS Tutorial
+            </p>
         </div>
     );
 };

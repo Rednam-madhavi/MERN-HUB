@@ -112,6 +112,10 @@ const CSSListStyles = () => {
                 <h2 className="text-lg sm:text-xl font-semibold">Output:</h2>
                 <img src={CustomList} alt="Custom list style output" className="rounded-md border border-gray-300 dark:border-gray-600" />
             </section>
+
+            <p className="text-center text-base mt-10 font-medium">
+                Next Chapter: CSS Links
+            </p>
         </div>
     );
 };

@@ -150,6 +150,10 @@ const CSSBorders = () => {
                 <h2 className="text-lg sm:text-xl font-semibold">Output:</h2>
                 <SectionImage src={borderShorthandImg} alt="CSS Border Shorthand" />
             </section>
+
+            <p className="text-center text-base mt-10 font-medium">
+                Next Chapter: CSS Images
+            </p>
         </div>
     );
 };

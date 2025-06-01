@@ -52,7 +52,11 @@ const CSSTransitions = () => {
                 <pre className="bg-gray-100 dark:bg-gray-700 p-3 rounded-md mt-2 font-mono">
                     transition: width 3s;
                 </pre>
+
             </div>
+            <p className="text-center text-base mt-10 font-medium">
+                Next Chapter: CSS Border Images
+            </p>
         </div>
     );
 };
