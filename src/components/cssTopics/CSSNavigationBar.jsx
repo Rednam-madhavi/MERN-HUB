@@ -1,9 +1,9 @@
 import React from 'react'
-import nav1 from '../../assets/css/nav1.webp'
-import nav2 from '../../assets/css/nav2.webp'
-import nav3 from '../../assets/css/nav3.webp'
+import nav1 from '../../assets/css/nav1.jpg'
+import nav2 from '../../assets/css/nav2.jpg'
+import nav3 from '../../assets/css/nav3.jpg'
 import nav4 from '../../assets/css/nav4.webp'
-import nav5 from '../../assets/css/nav5.webp'
+import nav5 from '../../assets/css/nav5.jpg'
 
 const CSSNavigationBar = () => {
   return (

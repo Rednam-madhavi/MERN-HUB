@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { ClipboardIcon, CheckIcon } from '@heroicons/react/solid';
 import { useClipboard } from 'use-clipboard-copy';
 
-import bgColorImage from '../../assets/css/background1.png';
-import bgImage from '../../assets/css/background2.png';
-import bgRepeatImage from '../../assets/css/background3.png';
-import bgSizeImage from '../../assets/css/background4.png';
+import bgColorImage from '../../assets/css/background1.jpg';
+import bgImage from '../../assets/css/background2.jpg';
+import bgRepeatImage from '../../assets/css/background3.jpg';
+import bgSizeImage from '../../assets/css/background4.jpg';
 import bgPositionImage from '../../assets/css/background5.png';
-import bgAttachmentImage from '../../assets/css/background6.png';
-import bgShorthandImage from '../../assets/css/background7.png';
-import bgMultipleImage from '../../assets/css/background8.png';
+import bgAttachmentImage from '../../assets/css/background6.jpg';
+import bgShorthandImage from '../../assets/css/background7.jpg';
+import bgMultipleImage from '../../assets/css/background8.jpg';
 import bgBlendImage from '../../assets/css/background9.png';
-import bgOriginImage from '../../assets/css/background10.png';
-import bgClipImage from '../../assets/css/background11.png';
+import bgOriginImage from '../../assets/css/background10.jpg';
+import bgClipImage from '../../assets/css/background11.jpg';
 
 const CSSBackgrounds = () => {
   const [copied, setCopied] = useState(null);

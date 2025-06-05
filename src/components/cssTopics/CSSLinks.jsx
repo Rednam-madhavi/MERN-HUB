@@ -1,6 +1,6 @@
 import React from 'react';
 import example from '../../assets/css/links1.webp';
-import output from '../../assets/css/links2.webp';
+import output from '../../assets/css/links2.jpg';
 
 const CSSLinks = () => {
   return (
