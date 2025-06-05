@@ -18,16 +18,16 @@ const Execution = () => {
         clipboard.copy(`<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    Hello World
+  Hello World
 </body>
 </html>`);
         setCopied(true);
-        setTimeout(() => setCopied(false), 2000); // Reset "copied" status after 2 seconds
+        setTimeout(() => setCopied(false), 2000);
     };
 
     const openModal = (image) => {
@@ -41,160 +41,140 @@ const Execution = () => {
     };
 
     return (
-        <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-8 text-gray-800 dark:text-gray-100">
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200 tracking-wide">
-                Your Journey to Creating Your First Website Begins Here!
-            </h1>
+        <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-10 text-gray-800 dark:text-gray-100">
 
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 Let's mark this as an important milestone: the creation of your first website! And what's a better way to start than with the traditional <strong>"Hello, World!"</strong>?
             </p>
 
-            <div className="space-y-4">
-                <h2 className="text-xl sm:text-2xl font-semibold">Why "Hello, World!"?</h2>
+            {/* Why Hello World */}
+            <section className="py-4 sm:py-5 space-y-4">
+                <h2 className="text-xl sm:text-2xl font-semibold mb-2">Why "Hello, World!"?</h2>
                 <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-                    In the programming world, "Hello, World!" is more than just a phrase. It's a tradition, an emotion, a simple program that teaches you the syntax and gets you started. And guess what? HTML is no different!
+                    In the programming world, "Hello, World!" is more than just a phrase. It's a tradition, an emotion, a simple program that teaches you the syntax and gets you started.
                 </p>
                 <p className="text-sm sm:text-base md:text-lg">
                     Our first website will display the text <span className="font-semibold text-blue-600">"Hello World"</span>.
                 </p>
-            </div>
+            </section>
 
-            <div className="space-y-4">
-                <h2 className="text-xl sm:text-2xl font-semibold">Let's Get Started: Setting Up Your VS Code</h2>
-                <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-                    If you haven't already set up your environment, open Visual Studio Code (VS Code).
-                </p>
+            {/* Setting up VS Code */}
+            <section className="py-4 sm:py-5 space-y-4">
+                <h2 className="text-xl sm:text-2xl font-semibold mb-2">Let's Get Started: Setting Up Your VS Code</h2>
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed">Open Visual Studio Code (VS Code).</p>
                 <img
                     src={vsCodeOpen}
                     alt="VS Code Open"
                     className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
                     onClick={() => openModal(vsCodeOpen)}
                 />
-            </div>
+            </section>
 
-            <div className="space-y-4">
-                <h2 className="text-xl sm:text-2xl font-semibold">Creating a New File</h2>
+            {/* Creating index.html */}
+            <section className="py-4 sm:py-5 space-y-4">
+                <h2 className="text-xl sm:text-2xl font-semibold mb-2">Creating a New File</h2>
                 <ul className="list-decimal list-inside space-y-2 text-sm sm:text-base md:text-lg pl-4">
-                    <li>Click on "Open Folder" and select or create a folder. (e.g., <code>html-tutorial</code>)</li>
-                    <li>Click on the "New File" icon in VS Code.</li>
-                    <li>Name the file <code>index.html</code> and press Enter.</li>
+                    <li>Select or create a folder using "Open Folder".</li>
+                    <li>Click the "New File" icon and name it <code>index.html</code>.</li>
                 </ul>
-            </div>
+            </section>
 
-            <div className="space-y-4">
-                <h2 className="text-xl sm:text-2xl font-semibold">Pasting the Code</h2>
-                <p className="text-sm sm:text-base md:text-lg">
-                    Paste the following code inside your <code>index.html</code> file:
-                </p>
-
+            {/* Copy Code Block */}
+            <section className="py-4 sm:py-5 space-y-4">
+                <h2 className="text-xl sm:text-2xl font-semibold mb-2">Pasting the Code</h2>
+                <p className="text-sm sm:text-base md:text-lg">Paste the following code inside your <code>index.html</code>:</p>
                 <div className="relative">
                     <pre className="bg-gray-100 dark:bg-gray-700 text-sm sm:text-base md:text-lg p-4 rounded overflow-x-auto border border-gray-300 dark:border-gray-700 shadow-md">
                         {`<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    Hello World
+  Hello World
 </body>
 </html>`}
                     </pre>
                     <button
                         onClick={handleCopy}
-                        className="absolute top-2 right-2 p-2 text-gray-800 dark:text-white bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                        className="absolute top-2 right-2 p-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
                     >
-                        {copied ? (
-                            <CheckIcon className="h-6 w-6 text-green-500" />
-                        ) : (
-                            <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-                        )}
+                        {copied ? <CheckIcon className="h-6 w-6 text-green-500" /> : <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
                     </button>
                 </div>
-            </div>
+            </section>
 
-            <div className="space-y-4">
-                <h2 className="text-xl sm:text-2xl font-semibold">Going Live using Live Server</h2>
-                <p className="text-sm sm:text-base md:text-lg">
-                    Click the <strong>"Go Live"</strong> icon at the bottom-right corner of your VS Code window.
-                </p>
+            {/* Go Live Section */}
+            <section className="py-4 sm:py-5 space-y-4">
+                <h2 className="text-xl sm:text-2xl font-semibold mb-2">Going Live using Live Server</h2>
+                <p className="text-sm sm:text-base md:text-lg">Click the <strong>"Go Live"</strong> button in the VS Code status bar.</p>
                 <img
                     src={goLiveIcon}
                     alt="Go Live Icon"
                     className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
                     onClick={() => openModal(goLiveIcon)}
                 />
-                <p className="text-sm sm:text-base md:text-lg">
-                    If you don’t see the button, make sure the <strong>Live Server</strong> extension is installed.
-                </p>
-            </div>
+                <p className="text-sm sm:text-base md:text-lg">Make sure the <strong>Live Server</strong> extension is installed.</p>
+            </section>
 
-            <div className="space-y-4">
-                <h2 className="text-xl sm:text-2xl font-semibold">Your First Website is Live!</h2>
-                <p className="text-sm sm:text-base md:text-lg">
-                    If you've followed along, you should now see your very first website displaying:
-                </p>
+            {/* Live Website Preview */}
+            <section className="py-4 sm:py-5 space-y-4">
+                <h2 className="text-xl sm:text-2xl font-semibold mb-2">Your First Website is Live!</h2>
+                <p className="text-sm sm:text-base md:text-lg">You should now see your website displaying:</p>
                 <img
                     src={helloWorldPreview}
                     alt="Hello World Website"
                     className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
                     onClick={() => openModal(helloWorldPreview)}
                 />
-            </div>
+            </section>
 
-            <div className="space-y-4">
-                <h2 className="text-xl sm:text-2xl font-semibold">Live Preview Extension</h2>
-                <p className="text-sm sm:text-base md:text-lg">
-                    Another great extension is <strong>HTML Preview</strong>. Install it by searching for "HTML Preview" in the VS Code Extensions tab.
-                </p>
+            {/* HTML Preview Extension */}
+            <section className="py-4 sm:py-5 space-y-4">
+                <h2 className="text-xl sm:text-2xl font-semibold mb-2">Live Preview Extension</h2>
+                <p className="text-sm sm:text-base md:text-lg">Install the <strong>HTML Preview</strong> extension.</p>
                 <img
                     src={livepreview}
-                    alt="HTML Livepreview extension"
+                    alt="HTML Live Preview Extension"
                     className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
                     onClick={() => openModal(livepreview)}
                 />
-                <p className="text-sm sm:text-base md:text-lg">
-                    It adds a preview button within VS Code that shows a live preview of your HTML — right inside the editor!
-                </p>
+                <p className="text-sm sm:text-base md:text-lg">It adds a preview button right inside VS Code!</p>
                 <img
                     src={htmlPreviewBtn}
                     alt="Live HTML Preview Button"
                     className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
                     onClick={() => openModal(htmlPreviewBtn)}
                 />
-                <p className="text-sm sm:text-base md:text-lg">
-                    Perfect for following this tutorial without needing to switch to a browser.
-                </p>
                 <img
                     src={htmlPreviewLive}
-                    alt="Live HTML Preview in action"
+                    alt="Live Preview in Action"
                     className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
                     onClick={() => openModal(htmlPreviewLive)}
                 />
-            </div>
+            </section>
 
+            {/* Modal Viewer */}
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-                    <div className="relative">
+                    <div className="relative max-w-3xl mx-auto">
                         <button
-                            onClick={closeModal}
-                            className="absolute top-2 right-2 text-white bg-gray-800 hover:bg-gray-700 p-1 rounded"
+                            onClick={() => setIsModalOpen(false)}
+                            className="absolute top-2 right-2 text-white bg-black bg-opacity-50 hover:bg-opacity-80 p-1 rounded-full"
                         >
                             ✕
                         </button>
-                        <img
-                            src={modalImage}
-                            alt="Modal Preview"
-                            className="max-w-full max-h-[90vh] rounded-md shadow-lg"
-                        />
+                        <img src={modalImage}
+                            alt="Zoomed Working"
+                            className="rounded-lg shadow-lg max-h-[90vh]" />
                     </div>
                 </div>
             )}
 
             <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
-                Next Chapter: HTML  Page Structure
+                Next Chapter: HTML Page Structure
             </p>
         </div>
     );

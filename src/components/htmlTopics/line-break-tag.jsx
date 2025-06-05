@@ -14,8 +14,6 @@ const LineBreakTag = () => {
         setTimeout(() => setCopiedTag(null), 2000);
     };
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
 
     const codeSnippet = '<br>';
 
@@ -63,22 +61,26 @@ const LineBreakTag = () => {
                         src={br}
                         alt="Line break demo"
                         className="w-full sm:w-3/4 lg:w-1/2 h-auto rounded-md shadow-md cursor-pointer"
-                        onClick={openModal}
+                        onClick={() => setIsModalOpen(true)}
                     />
                 </p>
             </div>
 
             {/* Modal to View Image in Fullscreen */}
             {isModalOpen && (
-                <div
-                    className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
-                    onClick={closeModal}
-                >
-                    <img
-                        src={br}
-                        alt="Line break demo"
-                        className="max-w-full max-h-full object-contain"
-                    />
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+                    <div className="relative max-w-3xl mx-auto">
+                        <button
+                            onClick={() => setIsModalOpen(false)}
+                            className="absolute top-2 right-2 text-white bg-black bg-opacity-50 hover:bg-opacity-80 p-1 rounded-full"
+                        >
+                            ✕
+                        </button>
+                        <img src={br}
+                            alt="Zoomed Line Break"
+                            className="rounded-lg shadow-lg max-h-[90vh]"
+                        />
+                    </div>
                 </div>
             )}
 

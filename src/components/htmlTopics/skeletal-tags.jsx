@@ -87,17 +87,16 @@ const SkeletalTag = () => {
 
             {isOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-                    <div className="relative">
+                    <div className="relative max-w-3xl mx-auto">
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="absolute top-2 right-2 text-white bg-gray-800 hover:bg-gray-700 p-1 rounded"
+                            className="absolute top-2 right-2 text-white bg-black bg-opacity-50 hover:bg-opacity-80 p-1 rounded-full"
                         >
                             ✕
                         </button>
-                        <img
-                            src={Working}
-                            alt="Skeletal HTML Full View"
-                            className="max-w-full max-h-[90vh] rounded-md shadow-lg"
+                        <img src={Working}
+                            alt="Zoomed Working"
+                            className="rounded-lg shadow-lg max-h-[90vh]"
                         />
                     </div>
                 </div>

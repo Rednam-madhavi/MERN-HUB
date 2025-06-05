@@ -6,6 +6,8 @@ import Meta from '../../assets/html/meta.jpg';
 const HtmlMetaTag = () => {
     const clipboard = useClipboard();
     const [copied, setCopied] = useState({});
+    const [isOpen, setIsOpen] = useState(false);
+
 
     const handleCopy = (codeSnippet, type) => {
         try {
@@ -113,7 +115,26 @@ const HtmlMetaTag = () => {
                 src={Meta}
                 alt="Favicon Example"
                 className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+                onClick={() => setIsOpen(true)}
             />
+
+            {isOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+                    <div className="relative max-w-3xl mx-auto">
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="absolute top-2 right-2 text-white bg-black bg-opacity-50 hover:bg-opacity-80 p-1 rounded-full"
+                        >
+                            ✕
+                        </button>
+                        <img src={Meta}
+                            alt="Zoomed Meta"
+                            className="rounded-lg shadow-lg max-h-[90vh]"
+                        />
+                    </div>
+                </div>
+            )}
+
             <h3 className="text-lg sm:text-xl font-semibold mt-4">Steps:</h3>
             <ol className="list-decimal pl-6 space-y-2">
                 <li><strong>Step 1:</strong> Create/Choose Favicon - Make a square image, usually 16x16 or 32x32 pixels, in .ico format. You can create a favicon from this website.</li>

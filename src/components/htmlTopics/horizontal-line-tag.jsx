@@ -10,7 +10,7 @@ const HorizontalLineTag = () => {
   const handleCopy = (text, tag) => {
     clipboard.copy(text);
     setCopiedTag(tag);
-    setTimeout(() => setCopiedTag(null), 2000); // Reset copied state after 2 seconds
+    setTimeout(() => setCopiedTag(null), 2000);
   };
 
   return (

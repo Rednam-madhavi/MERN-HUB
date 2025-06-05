@@ -8,68 +8,57 @@ const Introduction = () => {
   return (
     <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-8 text-gray-800 dark:text-gray-100">
 
-      <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-200 tracking-wide">
+      <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-wide text-gray-800 dark:text-gray-200">
         What is HTML?
       </h1>
 
       <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-        HTML (HyperText Markup Language) was created by Tim Berners-Lee in 1991 as a standard for creating web pages.
-        It's a markup language used to structure content on the web, defining elements like headings, paragraphs, links, and images.
-        HTML forms the backbone of web content.
+        HTML (HyperText Markup Language), created by Tim Berners-Lee in 1991, is the standard language used to build web pages. It structures content using elements such as headings, paragraphs, images, and links — forming the foundation of every website.
       </p>
 
       <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-4">
-        In layman's terms, HTML is like the <span className="font-semibold text-blue-600">skeleton of a website</span>.
-        It's a set of instructions that tells a web browser how to display text, images, videos, and other elements on a webpage.
+        Think of HTML as the <span className="font-semibold text-blue-600">skeleton of a website</span>. It provides the basic structure that tells a browser how to display content like text, images, and videos on a webpage.
       </p>
 
       <div className="py-4 sm:py-5 space-y-4">
-        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-          In a nutshell:
-        </h2>
+        <h2 className="text-xl sm:text-2xl font-semibold mb-4">In a Nutshell</h2>
         <ul className="list-disc list-inside space-y-3 text-sm sm:text-base md:text-lg">
-          <li>HTML is the language of the web, used to create websites.</li>
-          <li>Defines the structure/layout of web pages.</li>
-          <li>Files typically have .html or .htm extensions.</li>
-          <li>Latest version is HTML5.</li>
+          <li>The fundamental language of the web used to build websites</li>
+          <li>Defines the structure and layout of web pages</li>
+          <li>Files usually end with <code>.html</code> or <code>.htm</code></li>
+          <li>The latest version is HTML5</li>
         </ul>
       </div>
 
       <div className="py-4 sm:py-5 space-y-4">
-        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-          Features of HTML
-        </h2>
+        <h2 className="text-xl sm:text-2xl font-semibold mb-4">Features of HTML</h2>
         <ul className="list-disc list-inside space-y-3 text-sm sm:text-base md:text-lg">
-          <li>Platform-independent across OS like Mac, Linux, and Windows.</li>
-          <li>Supports multimedia content (images, videos, audio).</li>
-          <li>HTML is a markup language, not a programming language.</li>
-          <li>Integrates with CSS, JavaScript to build dynamic pages.</li>
+          <li>Works across platforms like macOS, Linux, and Windows</li>
+          <li>Supports multimedia content (images, videos, audio)</li>
+          <li>It's a markup language — not a programming language</li>
+          <li>Easily integrates with CSS and JavaScript for dynamic content</li>
         </ul>
       </div>
 
       <div className="py-4 sm:py-5 space-y-4">
-        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-          Why the Term HyperText & Markup Language?
-        </h2>
-        <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-4">
-          The term is made of two parts:
+        <h2 className="text-xl sm:text-2xl font-semibold mb-4">Why the Term "HyperText Markup Language"?</h2>
+        <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+          The name breaks down into two concepts:
         </p>
         <ul className="list-disc list-inside space-y-3 text-sm sm:text-base md:text-lg">
-          <li><span className="font-semibold">Hypertext:</span> linking of text with other documents</li>
-          <li><span className="font-semibold">Markup Language:</span> uses tags to display content</li>
+          <li><span className="font-semibold">Hypertext:</span> the ability to link text to other documents or pages</li>
+          <li><span className="font-semibold">Markup Language:</span> the use of tags to structure and present content</li>
         </ul>
         <p className="mt-4 text-xs md:text-sm">
-          Example of a tag: <code className="bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded text-xs md:text-sm">&lt;p&gt;</code>
+          Example tag: <code className="bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded">&lt;p&gt;</code>
         </p>
       </div>
 
       <div className="py-4 sm:py-5 space-y-4">
-        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-          Quick Exercise
-        </h2>
-        <p className="text-sm sm:text-base md:text-lg mb-4">
-          Open a webpage of your choice, right-click on the browser, and select <strong>'View Page Source'</strong>,
-          or press <strong>Ctrl + U</strong> (Windows) / <strong>Cmd + Option + U</strong> (Mac).
+        <h2 className="text-xl sm:text-2xl font-semibold mb-4">Quick Exercise</h2>
+        <p className="text-sm sm:text-base md:text-lg">
+          Visit any webpage, right-click, and select <strong>'View Page Source'</strong>, or press
+          <strong> Ctrl + U</strong> (Windows) / <strong>Cmd + Option + U</strong> (Mac).
         </p>
 
         <div className="my-4">
@@ -82,16 +71,17 @@ const Introduction = () => {
           </video>
         </div>
 
-        <p className="text-sm sm:text-base md:text-lg">You'll see the HTML code that structures that webpage.</p>
+        <p className="text-sm sm:text-base md:text-lg">
+          You'll see the raw HTML code that structures that page.
+        </p>
       </div>
 
       <div className="py-4 sm:py-5 space-y-4">
-        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-          HTML, CSS, JavaScript Analogy
-        </h2>
-        <p className="text-sm sm:text-base md:text-lg mb-4">
-          Think of building a webpage like making a car:
+        <h2 className="text-xl sm:text-2xl font-semibold mb-4">HTML, CSS & JavaScript Analogy</h2>
+        <p className="text-sm sm:text-base md:text-lg">
+          Creating a webpage is a lot like building a car:
         </p>
+
         <img
           src={structure}
           alt="HTML CSS JS Analogy"
@@ -101,42 +91,37 @@ const Introduction = () => {
 
         {isOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-            <div className="relative">
+            <div className="relative max-w-3xl mx-auto">
               <button
                 onClick={() => setIsOpen(false)}
-                className="absolute top-2 right-2 text-white bg-gray-800 hover:bg-gray-700 p-1 rounded"
+                className="absolute top-2 right-2 text-white bg-black bg-opacity-50 hover:bg-opacity-80 p-1 rounded-full"
               >
                 ✕
               </button>
-              <img
-                src={structure}
-                alt="HTML CSS JS Full View"
-                className="max-w-full max-h-[90vh] rounded-md shadow-lg"
-              />
+              <img src={structure} alt="Zoomed Working" className="rounded-lg shadow-lg max-h-[90vh]" />
             </div>
           </div>
         )}
 
         <ul className="list-disc list-inside space-y-3 text-sm sm:text-base md:text-lg">
-          <li><strong>HTML:</strong> Car's skeleton or frame (structure)</li>
-          <li><strong>CSS:</strong> Car's paint and design (style)</li>
-          <li><strong>JavaScript:</strong> Car's engine and movement (interactivity)</li>
+          <li><strong>HTML:</strong> The car’s frame and structure</li>
+          <li><strong>CSS:</strong> The paint and design (styling)</li>
+          <li><strong>JavaScript:</strong> The engine and interactivity (functionality)</li>
         </ul>
       </div>
 
       <div className="py-4 sm:py-5 space-y-4">
-        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-          History of HTML
-        </h2>
+        <h2 className="text-xl sm:text-2xl font-semibold mb-4">A Brief History of HTML</h2>
         <ul className="list-disc list-inside space-y-3 text-sm sm:text-base md:text-lg">
-          <li>1989: Tim Berners-Lee created the World Wide Web</li>
-          <li>1991: First version of HTML</li>
-          <li>1995–1997: Continued development</li>
-          <li>1999: HTML 4.0 standardized</li>
-          <li>Current version: HTML5</li>
+          <li>1989 – Tim Berners-Lee created the World Wide Web</li>
+          <li>1991 – First version of HTML was introduced</li>
+          <li>1995–1997 – HTML continued to evolve with new versions</li>
+          <li>1999 – HTML 4.0 was standardized</li>
+          <li>Now – HTML5 is the current and most widely used version</li>
         </ul>
+
         <p className="mt-4 italic text-xs md:text-sm">
-          Read more on the{' '}
+          Learn more on the{' '}
           <a
             href="https://en.wikipedia.org/wiki/HTML"
             className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition-colors"

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import elementStructure from '../../assets/html/html-elements-diagram.png';
 
 const HtmlTags = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+
     return (
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-gray-800 dark:text-gray-100">
 
@@ -163,8 +167,26 @@ const HtmlTags = () => {
             <img
                 src={elementStructure}
                 alt="HTML Tag Hierarchy"
-                className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md"
+                className="cursor-pointer w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md"
+                onClick={() => setIsOpen(true)}
             />
+
+            {isOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+                    <div className="relative max-w-3xl mx-auto">
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="absolute top-2 right-2 text-white bg-black bg-opacity-50 hover:bg-opacity-80 p-1 rounded-full"
+                        >
+                            ✕
+                        </button>
+                        <img src={elementStructure}
+                            alt="Zoomed Working"
+                            className="rounded-lg shadow-lg max-h-[90vh]"
+                        />
+                    </div>
+                </div>
+            )}
 
             <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
                 Next Chapter: HTML Elements

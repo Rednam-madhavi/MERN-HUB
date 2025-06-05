@@ -15,7 +15,6 @@ const HtmlComments = () => {
 
     return (
         <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-8 text-gray-800 dark:text-gray-100">
-            <h1 className="text-2xl sm:text-3xl font-semibold">HTML Comments</h1>
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 Comments in HTML are like little notes you leave in your code for yourself or other people. These notes help make the code easier to understand but don't show up on the actual website. The web browser just skips over them!
             </p>

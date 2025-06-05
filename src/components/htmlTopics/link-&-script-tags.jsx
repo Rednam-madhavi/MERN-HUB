@@ -7,6 +7,8 @@ import Link from '../../assets/html/link.jpg'
 const LinkAndScript = () => {
     const clipboard = useClipboard();
     const [copied, setCopied] = useState({});
+    const [isOpen, setIsOpen] = useState(false);
+
 
     const handleCopy = (snippet, key) => {
         clipboard.copy(snippet);
@@ -47,7 +49,25 @@ const LinkAndScript = () => {
                 src={Link}
                 alt="Link Tag Example"
                 className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+                onClick={() => setIsOpen(true)}
             />
+
+            {isOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+                    <div className="relative max-w-3xl mx-auto">
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="absolute top-2 right-2 text-white bg-black bg-opacity-50 hover:bg-opacity-80 p-1 rounded-full"
+                        >
+                            ✕
+                        </button>
+                        <img src={Link}
+                            alt="Zoomed Link"
+                            className="rounded-lg shadow-lg max-h-[90vh]"
+                        />
+                    </div>
+                </div>
+            )}
 
             <h2 className="text-2xl sm:text-3xl font-semibold mt-6">The &lt;script&gt; Tag</h2>
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">

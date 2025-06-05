@@ -6,7 +6,19 @@ import example from '../../assets/html/unorder.png';
 
 const UnorderedList = () => {
     const clipboard = useClipboard();
-    const [copied, setCopied] = useState({});
+    const [copied, setCopied] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalImage, setModalImage] = useState(null);
+
+    const openModal = (image) => {
+        setModalImage(image);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalImage(null);
+    };
 
     const handleCopy = (codeSnippet, type) => {
         try {
@@ -65,8 +77,9 @@ const UnorderedList = () => {
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">Example:</p>
             <img
                 src={Unorderlist}
-                alt="Unodered list"
+                alt="Unordered list"
                 className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+                onClick={() => openModal(Unorderlist)}
             />
 
             <h2 className="text-xl sm:text-2xl font-semibold mt-6">Key Characteristics of Unordered Lists</h2>
@@ -136,13 +149,31 @@ const UnorderedList = () => {
                     src={example}
                     alt="Example of Unordered List with Square Bullets"
                     className="w-full sm:w-3/4 lg:w-1/2 rounded-md shadow-md cursor-pointer"
+                    onClick={() => openModal(example)}
                 />
 
             </div>
 
+            {isModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+                    <div className="relative max-w-3xl mx-auto">
+                        <button
+                            onClick={() => setIsModalOpen(false)}
+                            className="absolute top-2 right-2 text-white bg-black bg-opacity-50 hover:bg-opacity-80 p-1 rounded-full"
+                        >
+                            ✕
+                        </button>
+                        <img src={modalImage}
+                            alt="Zoomed Working"
+                            className="rounded-lg shadow-lg max-h-[90vh]" />
+                    </div>
+                </div>
+            )}
+
             <p className="text-center text-sm sm:text-base md:text-lg mt-10 font-medium text-gray-800 dark:text-gray-200">
                 Next Chapter: HTML Ordered List
             </p>
+
         </div>
     );
 };

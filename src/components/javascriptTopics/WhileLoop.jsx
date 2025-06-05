@@ -4,12 +4,12 @@ import { useClipboard } from 'use-clipboard-copy';
 
 const WhileLoop = () => {
   const clipboard = useClipboard();
-  const [copied, setCopied] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState(null);
 
-  const handleCopy = (code) => {
+  const handleCopy = (code, index) => {
     clipboard.copy(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2000);
   };
 
   const exampleCode1 = `let i = 1;
@@ -25,6 +25,10 @@ while (input !== "yes" && input !== "no") {
   input = prompt("Please enter 'yes' or 'no':");
 }`;
 
+  const exampleCode3 = `while (condition) {
+  // code to be executed
+}`;
+
   return (
     <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8 py-6 space-y-8 text-gray-800 dark:text-gray-100">
 
@@ -34,11 +38,21 @@ while (input !== "yes" && input !== "no") {
 
       <div className="space-y-4">
         <h2 className="text-xl sm:text-2xl font-semibold">Basic Syntax</h2>
-        <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded text-sm sm:text-base md:text-lg overflow-x-auto border border-gray-300 dark:border-gray-600 shadow-md">
-          {`while (condition) {
-  // code to be executed
-}`}
-        </pre>
+        <div className="relative">
+          <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded text-sm sm:text-base md:text-lg overflow-x-auto border border-gray-300 dark:border-gray-600 shadow-md">
+            {exampleCode3}
+          </pre>
+          <button
+            onClick={() => handleCopy(exampleCode3, 2)}
+            className="absolute top-2 right-2 p-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+          >
+            {copiedIndex === 2 ? (
+              <CheckIcon className="h-6 w-6 text-green-500" />
+            ) : (
+              <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+            )}
+          </button>
+        </div>
         <p className="text-sm sm:text-base md:text-lg">
           The condition is checked before each iteration. If it evaluates to <code>true</code>, the loop body runs. If it becomes <code>false</code>, the loop exits.
         </p>
@@ -51,10 +65,10 @@ while (input !== "yes" && input !== "no") {
             {exampleCode1}
           </pre>
           <button
-            onClick={() => handleCopy(exampleCode1)}
+            onClick={() => handleCopy(exampleCode1, 0)}
             className="absolute top-2 right-2 p-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
           >
-            {copied ? (
+            {copiedIndex === 0 ? (
               <CheckIcon className="h-6 w-6 text-green-500" />
             ) : (
               <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
@@ -81,10 +95,10 @@ while (input !== "yes" && input !== "no") {
             {exampleCode2}
           </pre>
           <button
-            onClick={() => handleCopy(exampleCode2)}
+            onClick={() => handleCopy(exampleCode2, 1)}
             className="absolute top-2 right-2 p-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
           >
-            {copied ? (
+            {copiedIndex === 1 ? (
               <CheckIcon className="h-6 w-6 text-green-500" />
             ) : (
               <ClipboardIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
